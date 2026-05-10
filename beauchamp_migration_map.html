@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Migration Map — Beauchamp · Beach · Gaddis · Hicks · Pschigoda · Carlson</title>
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:wght@400;500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #f5efe2;
+  --paper-soft: rgba(255, 251, 240, 0.92);
+  --ink: #2a2118;
+  --ink-soft: #5a4a38;
+  --ink-faded: #8a7860;
+  --rule: #c8b89a;
+  --accent: #7a1f1f;
+  --gold: #a07d2c;
+  --shadow: rgba(60, 40, 20, 0.10);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--paper);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+header {
+  padding: 18px 28px 14px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+header h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+header h1 em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  text-transform: lowercase;
+  color: var(--accent);
+}
+header .sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin-top: 2px;
+}
+header nav {
+  margin-top: 8px;
+  font-size: 12px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+header nav a {
+  color: var(--gold);
+  text-decoration: none;
+  margin-right: 16px;
+}
+header nav a:hover { color: var(--accent); }
+#map {
+  flex: 1;
+  width: 100%;
+}
+.legend {
+  background: var(--paper-soft) !important;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  padding: 12px 14px !important;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 1.5;
+  max-width: 280px;
+  width: 280px;
+  box-shadow: 0 3px 12px var(--shadow);
+  margin-bottom: 28px !important;
+}
+.legend h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.legend .row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 3px 0;
+}
+.legend .swatch {
+  width: 22px;
+  height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.legend .name { font-family: 'EB Garamond', serif; font-size: 12px; }
+.legend .dates { color: var(--ink-faded); font-size: 10px; font-family: 'Cormorant Garamond', serif; font-style: italic; }
+.info-box {
+  position: absolute;
+  bottom: 28px;
+  left: 12px;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 1.5;
+  z-index: 1000;
+  max-width: 280px;
+  box-shadow: 0 3px 12px var(--shadow);
+}
+.leaflet-control-layers {
+  background: var(--paper-soft) !important;
+  border: 1px solid var(--rule) !important;
+  font-family: 'EB Garamond', serif;
+  font-size: 12px;
+  padding: 8px 12px !important;
+  max-width: 240px;
+}
+.leaflet-control-layers-overlays label {
+  margin: 2px 0;
+  display: block;
+}
+.info-box h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.info-box p { color: var(--ink-soft); font-size: 13px; }
+.leaflet-popup-content {
+  font-family: 'EB Garamond', serif;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.leaflet-popup-content b {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+.leaflet-popup-content .meta {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-faded);
+  font-size: 12px;
+  margin-top: 2px;
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 2px;
+  background: var(--paper);
+}
+.leaflet-popup-tip { background: var(--paper); }
+.leaflet-tooltip {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  font-family: 'EB Garamond', serif;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 2px;
+  box-shadow: none;
+}
+.leaflet-tooltip::before { display: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>FAMILY <em>migrations</em></h1>
+  <div class="sub">Every line traced from its origin to the modern family — Beauchamp · Beach · Gaddis · Hicks · Pschigoda · Carlson</div>
+  <nav>
+    <a href="index.html">← Home</a>
+    <a href="beauchamp_panorama.html">Panorama</a>
+    <a href="beauchamp_reference.html">Reference</a>
+  </nav>
+</header>
+
+<div id="map"></div>
+
+<div class="info-box">
+  <p style="margin:0; font-style:italic; color:var(--ink-soft);">Each colored line traces one family branch through its successive home towns. Click any dot for who lived there.</p>
+</div>
+
+<script>
+// ====== DATA: each family-line is an ordered list of stops with people + dates ======
+
+const LINES = [
+  {
+    name: 'Beauchamp (medieval)',
+    color: '#7a1f1f',
+    dash: null,
+    stops: [
+      { lat: 49.180, lng: -0.370, place: 'Caen, Normandy',
+        people: 'The Norman Beauchamps — origin region of the family name (<em>beau champ</em>, "fair field")',
+        date: 'pre-1066' },
+      { lat: 52.135, lng: -0.467, place: 'Bedford, England',
+        people: '<b>Hugh de Beauchamp of Bedford</b> — Domesday tenant-in-chief; took 47 manors after the Norman Conquest',
+        date: 'c. 1066-1101' },
+      { lat: 52.108, lng: -0.921, place: 'Cosgrove, Northamptonshire',
+        people: '<b>Edmund Beauchamp the Immigrant</b> — christened 17 Dec 1625 here',
+        date: '1625' },
+      { lat: 52.282, lng: -1.585, place: 'Warwick',
+        people: 'The senior <b>Earls of Warwick</b> — Guy 10th Earl, Thomas 11th Earl (Garter founder), Thomas 12th (Lord Appellant), Richard 13th Earl (tutor to Henry VI, Captain at Joan of Arc trial)',
+        date: 'c. 1268-1471' },
+      { lat: 52.192, lng: -2.222, place: 'Worcestershire',
+        people: 'The <b>Beauchamps of Powick</b> and the <b>Lygons of Madresfield</b> (later Earls Beauchamp 1815, model for Brideshead Revisited)',
+        date: 'c. 1300-1979' }
+    ]
+  },
+  {
+    name: 'Beauchamp — Maryland branch',
+    color: '#7a1f1f',
+    dash: '8 4',
+    stops: [
+      { lat: 52.108, lng: -0.921, place: 'Cosgrove, Northamptonshire',
+        people: '<b>Edmund Beauchamp</b> — born 1625, apprenticed mercer in London',
+        date: '1625-1665' },
+      { lat: 51.508, lng: -0.128, place: 'London',
+        people: '<b>Edmund Beauchamp</b> — made Freeman of London 9 May 1656; apprenticed as a mercer',
+        date: '1656' },
+      { lat: 38.093, lng: -75.708, place: 'Westover, Somerset Co., Maryland',
+        people: '<b>Edmund Beauchamp</b> — emigrated by 1665, first Clerk of Somerset Co. MD (1666); purchased 300 acres "Contention" on 30 Jun 1668. The Beauchamp House (NRHP 1984) still stands here.',
+        date: '1665-1691' }
+    ]
+  },
+  {
+    name: 'Beach line (Pilgrim John 1619)',
+    color: '#3d5a3d',
+    dash: null,
+    stops: [
+      { lat: 51.808, lng: -0.207, place: 'England (Hertfordshire / Derbyshire)',
+        people: '<b>"Ye Pilgrim" John Beach</b> — born c. 1619 in England (exact county disputed)',
+        date: 'c. 1619' },
+      { lat: 41.310, lng: -72.924, place: 'New Haven Colony',
+        people: '<b>John Beach</b> — first appears in colony records 4 Jan 1643 taking the Oath of Fidelity',
+        date: '1643' },
+      { lat: 41.181, lng: -73.131, place: 'Stratford, Connecticut',
+        people: '<b>John Beach</b> + <b>Isaac Beach</b> (tailor) + <b>William Beach</b> (carpenter) + <b>Abijah Beach</b> — five Beach generations rooted in Stratford',
+        date: '1660-c.1800' },
+      { lat: 42.196, lng: -73.366, place: 'Great Barrington, Massachusetts',
+        people: '<b>Isaac Beach II</b> (b. 1760) — moved family out of Stratford to the Berkshires',
+        date: 'late 1700s' },
+      { lat: 42.270, lng: -75.953, place: 'Barker, New York',
+        people: '<b>Isaac Beach II</b> — moved to Barker NY c. 1827; died there 1842',
+        date: '1827-1842' },
+      { lat: 39.7392, lng: -104.9903, place: 'Denver, Colorado',
+        people: '<b>E. Asbury Beach</b> + <b>Edna Vivian Beach</b> (b. 27 Jan 1895) — the family\'s western terminus before marrying into the Gaddis line',
+        date: '1890s' }
+    ]
+  },
+  {
+    name: 'Gaddis (Co. Monaghan 1801)',
+    color: '#1f5e2a',
+    dash: null,
+    stops: [
+      { lat: 54.249, lng: -6.968, place: 'Co. Monaghan, Ireland',
+        people: '<b>Adam Gaddis + Catherine McKee</b> — emigrated to America 1801 with son John (b. 1798)',
+        date: '1801' },
+      { lat: 41.464, lng: -74.038, place: 'New Windsor, Orange Co. NY',
+        people: '<b>Adam Gaddis</b> — first appears in 1800 US Census (filed 2 May 1801) as "Adam Geddis"',
+        date: '1800-1810' },
+      { lat: 42.388, lng: -74.741, place: 'Kortright / Davenport, Delaware Co. NY',
+        people: '<b>Adam + Catherine</b> and 12 children — Catskills upstate NY base. <b>John Gaddis + Chloe Fox</b> stayed here their whole lives (1880 census shows them in Davenport)',
+        date: '1810-1880' },
+      { lat: 39.733, lng: -90.229, place: 'Morgan Co., Illinois (Jacksonville)',
+        people: '<b>Adam + Catherine + younger children</b> — moved here in <b>1836</b>',
+        date: '1836' },
+      { lat: 40.997, lng: -90.273, place: 'Wataga, Knox Co., Illinois',
+        people: '<b>Lucas Gaddis</b> (1834-1904) — moved west from Delaware Co NY. Buried Robbins Cemetery. 13 children with two wives.',
+        date: 'c. 1860-1904' },
+      { lat: 41.299, lng: -89.782, place: 'Neponset, Bureau Co., Illinois',
+        people: '<b>Harry Lloyd Gaddis Sr.</b> — born here 30 Jul 1888',
+        date: '1888' },
+      { lat: 43.648, lng: -108.212, place: 'Thermopolis, Wyoming',
+        people: '<b>Harry Sr. + Edna Beach</b> — covered-wagon homestead attempt; built a sod-roof cabin, dug irrigation ditches, gave up after a couple of years',
+        date: 'c. 1915-17' },
+      { lat: 39.836, lng: -105.037, place: 'Westminster, Colorado',
+        people: '<b>Harry Lloyd Gaddis Jr.</b> — born 29 Sep 1916, photographed in a goat carriage here age 5-6',
+        date: '1916-1921' },
+      { lat: 39.739, lng: -104.990, place: 'Denver, Colorado',
+        people: '<b>Harry Jr.</b> grew up here; met <b>Thelma Grace Hicks</b>',
+        date: '1916-1940s' },
+      { lat: 40.862, lng: -79.895, place: 'Butler, Pennsylvania',
+        people: '<b>Harry Lloyd Gaddis Jr.</b> + Thelma — 62-year marriage based here; <b>Geoffrey Beach Gaddis</b> born here 24 Aug 1945',
+        date: '1940s-1996' }
+    ]
+  },
+  {
+    name: 'Hicks (Bridgeport IL → Denver)',
+    color: '#a07d2c',
+    dash: null,
+    stops: [
+      { lat: 38.069, lng: -105.272, place: 'Rosita, Custer Co., Colorado',
+        people: '<b>Alvin E. Hicks</b> (1854-1916) — silver mining town founded 1872, peaked late 1870s; burned 1881',
+        date: '1872-1881' },
+      { lat: 38.712, lng: -87.749, place: 'Bridgeport, Illinois',
+        people: '<b>Louis "Lou" Hicks</b> — born here; son of Alvin',
+        date: 'mid-1800s' },
+      { lat: 38.627, lng: -90.199, place: 'St. Louis, Missouri',
+        people: '<b>Louis Hicks</b> — passed through; his mother\'s origin point',
+        date: 'late 1800s' },
+      { lat: 39.739, lng: -104.990, place: 'Denver, Colorado',
+        people: '<b>Louis "Lou" Hicks</b> + <b>Ethel Agnes Thompson</b> — Depression-era vegetable cart, later stock investor; 7 children incl. <b>Thelma Grace Hicks</b> and <b>Robert Roscoe "Bob" Hicks</b>',
+        date: '1893-1976' }
+    ]
+  },
+  {
+    name: 'Pschigoda (Pomerania → Muskegon)',
+    color: '#4a3868',
+    dash: null,
+    stops: [
+      { lat: 53.850, lng: 16.000, place: 'Pomerania / West Prussia / Posen',
+        people: '<b>Gottfried Pschigoda + Pauline Stebner</b> — German-Polish borderlands; surname Germanized from Polish <em>Przygoda</em>',
+        date: 'pre-1880s' },
+      { lat: 43.234, lng: -86.248, place: 'Muskegon, Michigan',
+        people: '<b>William Pschigoda</b> + <b>Emma "Betty" Schultz</b> — settled in the lumber-capital boomtown of the 1880s-1900s; raised <b>Blossom, Patricia, Marvin "Red," Melvin, Myron</b>',
+        date: '1880s-1920s' },
+      { lat: 42.111, lng: -86.486, place: 'St. Joseph, Michigan',
+        people: '<b>Blossom Pschigoda Fehlberg</b> + <b>Frederick Fehlberg</b> — wedding/catering business; Fred worked for U.S. Forest Service',
+        date: '1920s-1950s' }
+    ]
+  },
+  {
+    name: 'Fehlberg — wartime Forest Service detail',
+    color: '#4a3868',
+    dash: '6 4',
+    stops: [
+      { lat: 42.111, lng: -86.486, place: 'St. Joseph, Michigan',
+        people: '<b>Frederick Fehlberg</b> — Forest Service base before WWII',
+        date: 'pre-1942' },
+      { lat: 36.778, lng: -119.418, place: 'San Joaquin Valley, California',
+        people: '<b>Frederick Fehlberg</b> — shipped out by the Forest Service\'s <em>Emergency Rubber Project</em> to develop guayule rubber after Japan cut off Asian latex supplies in 1942',
+        date: '1942-45' }
+    ]
+  },
+  {
+    name: 'Ansman / Beauchamp Eastern Shore → PA',
+    color: '#7a1f1f',
+    dash: '4 4',
+    stops: [
+      { lat: 38.093, lng: -75.708, place: 'Somerset/Wicomico Co., Maryland',
+        people: '<b>Beauchamp Eastern Shore line</b> — Edward Beauchamp, Thomas 1716, Levin Sr., Levin 1772, Levin Henry, Francis Tubman, Francis Elmo, <b>Frances Mae Beauchamp</b>',
+        date: '1691-c.1900' },
+      { lat: 40.519, lng: -78.395, place: 'Altoona, Pennsylvania',
+        people: '<b>Frances Mae Beauchamp + William E. Ansman</b> — Kip\'s great-grandparents on the Ansman side. Carole Kay Ansman born here 25 Mar 1946.',
+        date: 'early 20th c.' },
+      { lat: 40.862, lng: -79.895, place: 'Butler, Pennsylvania',
+        people: '<b>Carole + Geoff Gaddis</b> — married, started family',
+        date: '1960s-70s' }
+    ]
+  },
+  {
+    name: 'Modern Gaddis: PA → VT',
+    color: '#2f6960',
+    dash: null,
+    stops: [
+      { lat: 40.024, lng: -75.314, place: 'Bryn Mawr, Pennsylvania',
+        people: '<b>Jason Beach Gaddis</b> — born 20 Jan 1972',
+        date: '1972' },
+      { lat: 42.851, lng: -72.557, place: 'Brattleboro, Vermont',
+        people: '<b>Carole + Geoff + Jason</b> — moved here 1973-74',
+        date: '1973-1976' },
+      { lat: 43.001, lng: -72.519, place: 'Putney, Vermont',
+        people: '<b>Carole + Geoff</b> — settled 1976. <b>Beth Carlson-Gaddis</b> later at Vermont Shepherd (Major\'s Farm) here',
+        date: '1976-present' }
+    ]
+  },
+  {
+    name: 'Carlson (St. Joseph MI → VT)',
+    color: '#3d5a73',
+    dash: null,
+    stops: [
+      { lat: 42.111, lng: -86.486, place: 'St. Joseph, Michigan',
+        people: '<b>Patricia Fehlberg Carlson + Gordon Carlson Jr.</b> — raised 10 children here',
+        date: '1950s-90s' },
+      { lat: 43.001, lng: -72.519, place: 'Putney, Vermont',
+        people: '<b>Beth Carlson-Gaddis</b> (the third of ten Carlson siblings) — moved to Vermont; met Jason on a farm',
+        date: '1990s-present' }
+    ]
+  },
+  {
+    name: 'Kip & Asa: birth → present',
+    color: '#a07d2c',
+    dash: '6 4',
+    stops: [
+      { lat: 41.878, lng: -87.630, place: 'Chicago, Illinois',
+        people: '<b>Asa Turner Carlson Gaddis</b> — born 8 Dec 2001',
+        date: '2001' },
+      { lat: 43.001, lng: -72.519, place: 'Putney, Vermont',
+        people: 'Kip + Asa raised here',
+        date: '2000s-2020s' },
+      { lat: 43.162, lng: -77.611, place: 'Rochester, New York',
+        people: '<b>Kip Gaddis</b> — Rochester Institute of Technology, mechanical engineering',
+        date: '2023-2027' }
+    ]
+  }
+];
+
+// ====== MAP SETUP ======
+
+const map = L.map('map', {
+  worldCopyJump: true,
+  zoomControl: true,
+  attributionControl: false
+}).setView([45.0, -45.0], 3);
+
+// CartoDB Positron — clean, light, paper-tone, FREE without API key
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  subdomains: 'abcd',
+  minZoom: 2,
+  maxZoom: 19
+}).addTo(map);
+
+L.control.attribution({position: 'bottomleft', prefix: false})
+ .addAttribution('© <a href="https://carto.com/" target="_blank">CARTO</a> · © <a href="https://openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>')
+ .addTo(map);
+
+// ====== BUILD LAYERS ======
+
+const overlays = {};
+
+LINES.forEach((line, idx) => {
+  const layer = L.layerGroup();
+  const latlngs = line.stops.map(s => [s.lat, s.lng]);
+
+  // The connecting path
+  const path = L.polyline(latlngs, {
+    color: line.color,
+    weight: 3,
+    opacity: 0.85,
+    dashArray: line.dash || null,
+    smoothFactor: 1.5
+  });
+  layer.addLayer(path);
+
+  // Arrowheads on each segment via decorator-style markers
+  for (let i = 0; i < latlngs.length - 1; i++) {
+    const [a, b] = [latlngs[i], latlngs[i+1]];
+    // Midpoint marker as a directional dot
+    const mid = [(a[0]+b[0])/2, (a[1]+b[1])/2];
+    const angle = Math.atan2(b[0]-a[0], b[1]-a[1]) * 180 / Math.PI;
+    const arrow = L.marker(mid, {
+      icon: L.divIcon({
+        className: 'arrow-icon',
+        html: `<div style="
+          width:0;height:0;
+          border-left:6px solid transparent;
+          border-right:6px solid transparent;
+          border-bottom:9px solid ${line.color};
+          opacity:0.7;
+          transform: rotate(${90 - angle}deg);
+          margin-left:-6px;margin-top:-5px;
+        "></div>`,
+        iconSize: [12, 12]
+      }),
+      interactive: false
+    });
+    layer.addLayer(arrow);
+  }
+
+  // Dots + popups at each stop
+  line.stops.forEach((s, i) => {
+    const dot = L.circleMarker([s.lat, s.lng], {
+      radius: 7,
+      color: line.color,
+      fillColor: '#f5efe2',
+      fillOpacity: 0.95,
+      weight: 2.5
+    });
+    dot.bindPopup(`
+      <b>${s.place}</b>
+      <div class="meta">${s.date}</div>
+      <div style="margin-top:6px;">${s.people}</div>
+    `, { maxWidth: 320 });
+    dot.bindTooltip(s.place, { direction: 'top', offset: [0, -8] });
+    layer.addLayer(dot);
+  });
+
+  overlays[line.name] = layer;
+  layer.addTo(map);
+});
+
+// Layer toggle control
+L.control.layers(null, overlays, { collapsed: false, position: 'topright' }).addTo(map);
+
+// ====== LEGEND ======
+
+const legend = L.control({ position: 'topleft' });
+legend.onAdd = function() {
+  const div = L.DomUtil.create('div', 'legend');
+  let html = '<h3>Family Lines</h3>';
+  LINES.forEach(line => {
+    const dashCSS = line.dash ? `background-image: repeating-linear-gradient(90deg, ${line.color} 0 8px, transparent 8px 14px); background-color: transparent;` : `background-color: ${line.color};`;
+    const earliest = line.stops[0].date;
+    const latest = line.stops[line.stops.length - 1].date;
+    html += `
+      <div class="row">
+        <div class="swatch" style="${dashCSS}"></div>
+        <div>
+          <div class="name">${line.name}</div>
+          <div class="dates">${earliest} → ${latest}</div>
+        </div>
+      </div>`;
+  });
+  div.innerHTML = html;
+  return div;
+};
+legend.addTo(map);
+
+// Fit map to all data
+const allPoints = LINES.flatMap(l => l.stops.map(s => [s.lat, s.lng]));
+map.fitBounds(allPoints, { padding: [60, 60] });
+</script>
+
+</body>
+</html>
