@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Beauchamp Family — Summary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:        #f5efe2;
+  --ink:          #2a2118;
+  --ink-soft:     #5a4a38;
+  --ink-faded:    #8a7860;
+  --rule:         #c8b89a;
+  --accent:       #7a1f1f;
+  --gold:         #a07d2c;
+  --shadow:       rgba(60, 40, 20, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(160, 125, 44, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 80% 60%, rgba(122, 31, 31, 0.04) 0%, transparent 45%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.13  0 0 0 0 0.09  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.7;
+  padding: 0 24px;
+  min-height: 100vh;
+}
+.topbar {
+  background: rgba(245, 239, 226, 0.96);
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  margin: 0 -24px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.topbar-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 24px; align-items: center; }
+.brand { font-family: 'Cinzel', serif; font-weight: 600; font-size: 15px; letter-spacing: 0.12em; }
+.brand em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; color: var(--accent); letter-spacing: 0.02em; text-transform: lowercase; }
+.topbar nav { display: flex; gap: 18px; }
+.topbar nav a {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 16px;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+.topbar nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.topbar nav a:hover { color: var(--accent); }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 64px 0 100px; }
+
+.front { text-align: center; margin-bottom: 56px; }
+.front h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(28px, 4.4vw, 42px);
+  letter-spacing: 0.07em;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.front h1 em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  color: var(--accent);
+}
+.front .sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 21px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+.front .compiled {
+  font-family: 'EB Garamond', serif;
+  font-size: 12.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  margin-top: 22px;
+}
+
+.section { margin: 56px 0; }
+.section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(24px, 3.4vw, 32px);
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.section .roman {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 8px;
+}.section p { margin-bottom: 16px; color: var(--ink-soft); }
+.section p strong { color: var(--ink); font-weight: 600; }
+.section p em { color: var(--accent); font-style: italic; }
+
+.epigraph {
+  margin: 40px auto 0;
+  max-width: 600px;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 19px;
+  line-height: 1.5;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--rule);
+}
+
+.divider {
+  text-align: center;
+  margin: 36px 0;
+  color: var(--gold);
+  letter-spacing: 0.5em;
+  font-size: 13px;
+}
+
+footer {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-faded);
+  font-size: 14px;
+}
+footer .glyph { color: var(--gold); letter-spacing: 0.5em; display: block; margin-bottom: 12px; }
+
+@media (max-width: 700px) {
+  body { padding: 0 16px; font-size: 16.5px; }
+  .topbar { margin: 0 -16px; padding: 10px 14px; }
+  .topbar-inner { gap: 12px; flex-wrap: wrap; }
+  .topbar nav { gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand">Beauchamp <em>family</em></span>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="beauchamp_panorama.html">Panorama</a>
+      <a href="beauchamp_reference.html">Reference</a>
+      <a href="beauchamp_summary.html" class="active">Summary</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="front">
+    <h1>The Beauchamp <em>family</em> Line</h1>
+    <p class="sub">A summary of thirty-one generations<br>from a Domesday baron to a present-day household</p>
+    <div class="compiled">After Lorraine Shoemaker · expanded with primary-source research</div>
+  </div>
+
+  <!-- ========================================================== -->
+  <div class="section">
+    <div class="roman">I · NORMAN ORIGINS</div>
+    <h2>The first generation, c. 1066</h2>
+
+    <p>The line begins with <strong>Hugh de Beauchamp</strong>, a Norman tenant-in-chief who came to England in the wake of the Conquest. By the time of the Domesday survey of 1086 he held forty-three manors in Bedfordshire alone, with additional estates in Buckinghamshire and Hertfordshire — most taken from the Anglo-Saxon Eskil of Ware. He held Bedford Castle. His name appears on a charter of William the Conqueror as "sheriff." His wife <strong>Adeliza Taillebois</strong> was the daughter of a Hastings veteran and, through her mother Lucy of Bolingbroke, descended from the Mercian house of Earl Leofric and Lady Godiva.</p>
+
+    <p>By the second generation the family had moved west into Worcestershire. <strong>Walter de Beauchamp of Elmley</strong> — one of King Henry I's "new men" — married <em>Emmeline d'Abetot</em>, daughter of the notoriously harsh Sheriff Urse d'Abetot, and through her acquired both the d'Abetot lands and the hereditary Sheriffdom of Worcestershire. <strong>Elmley Castle</strong> would remain the family's principal seat for the next 158 years.</p>
+  </div>
+
+  <!-- ========================================================== -->
+  <div class="section">
+    <div class="roman">II · THE EARLDOM OF WARWICK</div>
+    <h2>From regional barons to the high nobility of England</h2>
+
+    <p>Six Worcestershire generations later, in 1268, the Beauchamps inherited one of the half-dozen great earldoms of medieval England. <strong>William III de Beauchamp</strong> had married Isabel Mauduit, sister of the childless 8th Earl of Warwick; on the earl's death the title passed through her to her son. The Beauchamp Earls of Warwick would hold it for the next 178 years.</p>
+
+    <p>Two figures from this stretch reach into the broadest English history. <strong>Guy de Beauchamp, 10th Earl</strong> (1272–1315) — known to Edward II as "the Black Dog of Arden" — personally captured Piers Gaveston in 1312 and ordered his beheading at Blacklow Hill. From Guy's eldest son <strong>Thomas Beauchamp, 11th Earl</strong>, came one of the original Knights of the Garter, a commander at Crécy and Poitiers, and the rebuilder of Caesar's and Guy's Towers at Warwick Castle. Two generations later, <strong>Richard Beauchamp, 13th Earl</strong> served as Henry V's commander at Agincourt and as tutor to the infant Henry VI; he is the figure depicted in the magnificent <em>Beauchamp Pageant</em> in the British Library, and his gilt-bronze tomb at Warwick is one of the masterpieces of English funerary art.</p>
+
+    <p>The senior earldom ran on for one more generation before the Wars of the Roses caught it. Anne Beauchamp, daughter of Richard the 13th Earl, married <strong>Richard Neville — "Warwick the Kingmaker"</strong> — and saw both her husband and her son-in-law die at Barnet and Tewkesbury in 1471. Her own daughter <strong>Anne Neville</strong> became Queen of England as the wife of Richard III; their son <strong>Edward of Middleham</strong>, the only person of Beauchamp blood ever to be heir apparent to the English crown, died at Middleham aged about ten in 1484. With Bosworth a year later the Yorkist dynasty ended, and Beauchamp blood went no further on the throne — through that line.</p>
+  </div>
+
+  <!-- ========================================================== -->
+  <div class="section">
+    <div class="roman">III · THE TUDOR LINK</div>
+    <h2>How a Beauchamp granddaughter became ancestress of every monarch since Henry VIII</h2>
+
+    <p>What the senior line lost at Bosworth, a cadet line had already won by another route. The <strong>Beauchamps of Bletso</strong> — a Bedfordshire branch — married into the legitimised line of John of Gaunt: <strong>Margaret Beauchamp of Bletso</strong> (c. 1410–1482) had a daughter, <strong>Lady Margaret Beaufort</strong>, who in turn bore <strong>Henry VII</strong>, the founder of the Tudor dynasty.</p>
+
+    <p>Through that single Beauchamp grandmother, every English (and later British) monarch from Henry VIII forward — Edward VI, Mary I, Elizabeth I, James I, Charles I and II, William III and Anne, the Hanoverians, Victoria, the Windsors, Elizabeth II, and Charles III — descends. The Beauchamp line that did not survive on the throne in 1485 took a back-door route through the Tudors and never left.</p>
+  </div>
+
+  <!-- ========================================================== -->
+  <div class="section">
+    <div class="roman">IV · POWICK AND BRIDESHEAD</div>
+    <h2>The cadet line that became a novel</h2>
+
+    <p>This family's direct descent does not run through the senior Earls of Warwick or through the Bletso line. It runs through a <em>third</em> branch, the <strong>Beauchamps of Powick</strong>, founded by a younger son of the senior Worcestershire stock and producing — across the 14th and 15th centuries — a Speaker of the House of Commons, a Treasurer of England under Henry VI, and finally an heiress: <strong>Anne Beauchamp</strong>, who in the late fifteenth century married Sir Thomas Lygon of <strong>Madresfield Court</strong>.</p>
+
+    <p>Three centuries later, in 1815, William Lygon was created <strong>Earl Beauchamp</strong> in explicit recognition of that descent — formally reviving the Beauchamp surname through Anne. The 7th Earl Beauchamp (1872–1938) — Knight of the Garter, Governor of New South Wales, Liberal Leader of the House of Lords — was driven into European exile in 1931 when his brother-in-law the Duke of Westminster exposed his homosexuality to King George V. The 7th Earl's second son, <strong>Hugh Patrick Lygon</strong>, was at Oxford with Evelyn Waugh and is the principal real-life model for <strong>Lord Sebastian Flyte in <em>Brideshead Revisited</em></strong>. Madresfield itself supplied many features of the fictional Brideshead Castle. The Marchmains and Flytes of twentieth-century English literature are this family's distant cousins.</p>
+  </div>
+
+  <!-- ========================================================== -->
+  <div class="section">
+    <div class="roman">V · COSGROVE AND THE MAYFLOWER</div>
+    <h2>From Northamptonshire yeomanry to the Plymouth Colony</h2>
+
+    <p>The line surfaces from medieval obscurity in 1550 with <strong>Thomas Beauchamp of Cosgrove</strong>, Northamptonshire — a yeoman recorded in the Heralds' Visitation of London in 1633. His youngest son <strong>John Beauchamp</strong> (c. 1592–1655) left for the City of London, was apprenticed as a salter, and became one of the <strong>Merchant Adventurers who financed the Mayflower</strong> in 1620. When the Plymouth Colony's debts came due, John was one of five English "Undertakers" who took on the colony's £1,800 obligation in 1626 in exchange for a six-year monopoly on the beaver-fur trade. The arrangement deteriorated; John eventually sued William Bradford in 1641. He never crossed the Atlantic himself. His brother-in-law <strong>Edmund Freeman</strong> did — sailing on the <em>Abigail</em> in 1635, founding Sandwich on Cape Cod two years later, and lying buried still in East Sandwich beneath two fieldstones called the Saddle and Pillion.</p>
+  </div>
+
+  <!-- ========================================================== -->
+  <div class="section">
+    <div class="roman">VI · THE EASTERN SHORE</div>
+    <h2>The first Clerk of Somerset County, Maryland</h2>
+
+    <p>John Beauchamp's son <strong>Edmund Beauchamp</strong> (1625–1691) crossed in his thirties. On 22 August 1666, by proclamation of Lord Baltimore, Somerset County, Maryland was established. Edmund became its <strong>first Clerk and Keeper of Records</strong>, a post he held for twenty-five years; the folklorist Stith Thompson, his descendant, called his court books "<em>a more splendidly kept set of records of court proceedings and deeds cannot, we believe, be found elsewhere during the early colonial period.</em>"</p>
+
+    <p>Eleven days after his marriage to <strong>Sarah Dixon</strong>, daughter of an early Quaker settler, Edmund purchased 300 acres at the head of the Great Annemessex River — a tract called <em>Contention</em>. He conveyed it to Sarah as her jointure that October. <em>Contention</em> would remain Beauchamp land for more than a century, the family seat through three generations. His will was misplaced in the courthouse for centuries and only rediscovered in an alcove at Princess Anne in 1932.</p>
+
+    <p>The next six generations stayed close to the Eastern Shore. <strong>Edward</strong> (c. 1683–1750) married into the Huguenot Fountain family. His son Fountain Beauchamp served the Continental Army cause as a recognised D.A.R. patriot. <strong>Thomas</strong> (1716–1759) married into the prominent Handy planter family. <strong>Levin Henry Beauchamp</strong> (1812–1887) enlisted in the 1st Maryland Cavalry on the Union side in September 1864 and was appointed Postmaster of Westover in 1874. His grandson <strong>Francis Tubman Beauchamp</strong> and his wife May Davis both died young, in 1896 and 1899 respectively — leaving two small children, Francis Elmo and Margaret, to be raised by Hayman cousins.</p>
+  </div>
+
+  <!-- ========================================================== -->
+  <div class="section">
+    <div class="roman">VII · THE RAILROAD AND PENNSYLVANIA</div>
+    <h2>An orphan, an 8:57 train, a Vermont town</h2>
+
+    <p>The orphan boy, <strong>Francis Elmo Beauchamp</strong> (1893–1973), grew up in the Hayman household on the Eastern Shore and went to work for the Pennsylvania Railroad — Middle Division — as a fireman. On 15 September 1913, at half past six in the morning, he married <strong>Regina Catherine Calhoun</strong> at St. Thomas's Catholic Church in Bedford, Pennsylvania. The newlyweds caught the 8:57 train for a honeymoon trip to Philadelphia, New York, and Baltimore, then settled their family in Altoona, the great Pennsylvania Railroad shop town in the central highlands.</p>
+
+    <p>Their daughter <strong>Frances Mae Beauchamp</strong> (1916–1975) married <strong>William E. Ansman</strong>, an Altoona bookkeeper of Pennsylvania-German stock; they later moved west across the state to Butler, north of Pittsburgh. Their daughter <strong>Carole Ansman</strong> married <strong>Geoffrey "Geoff" B. Gaddis</strong> — son of Harry Lloyd Gaddis Jr. and Thelma Grace Hicks of Butler — and in the early 1980s they left Pennsylvania for <strong>Putney, Vermont</strong>, where they spent the rest of their lives in deep civic engagement, supporting Vermont Humanities and the Yellow Barn international chamber music center.</p>
+  </div>
+
+  <!-- ========================================================== -->
+  <div class="section">
+    <div class="roman">VIII · THE MATERNAL SIDE</div>
+    <h2>St. Joseph and Benton Harbor, Michigan</h2>
+
+    <p>The maternal line that joins this story comes from southwest Michigan, on the eastern shore of Lake Michigan opposite Chicago. <strong>Patricia Fehlberg Carlson</strong> raised ten children in a single Patricia-centered household — one (Nancy Bowes) by Verrill Norwood and the other nine, including <strong>Beth Carlson-Gaddis</strong>, by Gordon Carlson Jr. Beth's mother Patricia descended on one side from <strong>Fred Fehlberg</strong> and <strong>Blossom Pschigoda Fehlberg</strong>, whose own family came from the Pschigoda sibling group of William Pschigoda and Emma "Betty" Schultz — Polish-German immigrants to the Berrien County industrial belt. Blossom is honoured today by the <strong>Blossom Fehlberg Metal Studio</strong> at Water Street Glassworks in Benton Harbor, opened in 2009 by Nancy Bowes in her grandmother's memory.</p>
+  </div>
+
+  <!-- ========================================================== -->
+  <div class="section">
+    <div class="roman">IX · THE PRESENT GENERATION</div>
+    <h2>Vermont and Rochester, twenty-first century</h2>
+
+    <p>Carole and Geoff's son <strong>Jason Gaddis</strong> took an M.Arch. from Yale in 1999 and runs J Gaddis Design, a practice serving the Upper Valley of Vermont and New Hampshire with a focus on historic preservation and universal design. He married <strong>Beth Carlson</strong>, the affineur — master cheesemaker — at Vermont Shepherd in Putney, whose work helped elevate the Vermont artisan-cheese renaissance.</p>
+
+    <p>Their elder son <strong>Kip Gaddis</strong> is studying mechanical engineering at the Rochester Institute of Technology, with graduation expected in 2027. He is an undergraduate researcher at the RIT Nano Power Research Laboratories, working on a NASA-funded effort to build <em>radioisotope thermoradiative cells</em> for deep-space power generation in collaboration with NASA Glenn. Earlier in 2025 he was a process-engineering intern at the RIT Semiconductor & Nanofabrication Laboratory. He has been part of RIT Formula SAE Racing for three years — first as Aerodynamics Design Engineer, more recently as Electronics Design & Test Engineer — and is a UPWARDS for the Future Fellow under RIT's partnership with Tokyo Electron. Brother: Asa Gaddis.</p>
+  </div>
+
+  <p class="epigraph">Thirty-one generations · approximately nine hundred and fifty years · from a Domesday baron in eleventh-century Bedfordshire to an undergraduate in upstate New York.</p>
+
+  <footer>
+    Originally compiled by Lorraine Shoemaker for Frances Lorraine Ansman<br>
+    summarised May 2026
+  </footer>
+
+</div>
+
+</body>
+</html>

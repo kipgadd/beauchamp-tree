@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Beauchamp Family — Three Views</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:wght@400;500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f5efe2;
+  --paper-soft: rgba(255, 251, 240, 0.65);
+  --ink: #2a2118;
+  --ink-soft: #5a4a38;
+  --ink-faded: #8a7860;
+  --rule: #c8b89a;
+  --accent: #7a1f1f;
+  --gold: #a07d2c;
+  --green: #3d5a3d;
+  --purple: #4a3868;
+  --shadow: rgba(60, 40, 20, 0.10);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 20% 5%, rgba(160, 125, 44, 0.07) 0%, transparent 50%),
+    radial-gradient(circle at 80% 95%, rgba(122, 31, 31, 0.05) 0%, transparent 50%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.13  0 0 0 0 0.09  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0 24px;
+}
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 80px 0 80px;
+  text-align: center;
+}
+.crest { width: 80px; height: 80px; margin: 0 auto 24px; display: block; color: var(--gold); }
+h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(32px, 5vw, 50px);
+  letter-spacing: 0.07em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+h1 em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  color: var(--accent);
+}
+.sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 21px;
+  max-width: 720px;
+  margin: 0 auto 8px;
+}
+.sub em { color: var(--accent); }
+.byline {
+  font-family: 'EB Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  margin-top: 24px;
+}
+.divider {
+  margin: 48px auto 36px;
+  color: var(--gold);
+  letter-spacing: 0.5em;
+  font-size: 14px;
+}
+.label {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 17px;
+  max-width: 640px;
+  margin: 0 auto 28px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 0 auto;
+  max-width: 980px;
+  text-align: left;
+}
+@media (min-width: 1100px) {
+  .cards { grid-template-columns: repeat(4, 1fr); }
+}
+.view-card {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  padding: 28px 26px;
+  border-radius: 2px;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .15s, transform .15s, border-color .15s;
+  min-height: 280px;
+}
+.view-card:hover {
+  box-shadow: 0 6px 20px var(--shadow);
+  transform: translateY(-2px);
+  border-left-color: var(--accent);
+}
+.view-card.tree   { border-left-color: var(--gold); }
+.view-card.visual { border-left-color: var(--green); }
+.view-card.ref    { border-left-color: var(--purple); }
+.view-card.maternal { border-left-color: #2f6960; }
+.view-card.panorama { border-left-color: var(--accent); background: rgba(255, 248, 232, 0.78); }
+.view-card.panorama .num { color: var(--accent); }
+.view-card.featured-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin: 0 auto 18px;
+  max-width: 980px;
+}
+.view-card .num {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+}
+.view-card .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--ink);
+  margin-top: 8px;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+.view-card p {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  flex: 1 1 auto;
+  margin-bottom: 14px;
+}
+.view-card .open {
+  margin-top: auto;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.view-card .open::after { content: ' →'; }
+
+.summary {
+  margin: 60px auto 0;
+  max-width: 760px;
+  padding: 36px 32px;
+  background: rgba(160, 125, 44, 0.07);
+  border: 1px solid var(--gold);
+  border-left-width: 3px;
+  border-right-width: 3px;
+  border-radius: 2px;
+  text-align: left;
+  position: relative;
+}
+.summary::before { content: none; }
+.summary h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--ink);
+  text-align: center;
+  margin-bottom: 18px;
+  line-height: 1.15;
+}
+.summary p {
+  font-family: 'EB Garamond', serif;
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+  line-height: 1.65;
+}
+.summary p strong { color: var(--ink); }
+.summary p em { color: var(--accent); font-style: italic; }
+.summary p:last-child { margin-bottom: 0; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 28px 0 0;
+  padding: 16px 0;
+  border-top: 1px dotted var(--rule);
+}
+.stat {
+  text-align: center;
+  font-family: 'EB Garamond', serif;
+}
+.stat .n {
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat .l {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12.5px;
+  color: var(--ink-faded);
+  letter-spacing: 0.04em;
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-faded);
+  font-size: 14px;
+  text-align: center;
+}
+footer .glyph { color: var(--gold); letter-spacing: 0.5em; display: block; margin-bottom: 10px; }
+
+@media (max-width: 780px) {
+  .cards { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .wrap { padding: 36px 0 60px; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1>The Beauchamp <em>family</em> Line</h1>
+  <p class="sub">Thirty-one generations · <em>nine hundred and fifty years</em></p>
+  <p class="byline">After Lorraine Shoemaker · expanded with primary-source research</p>
+
+  <p class="lead" style="margin-top:36px;">The same family, the same data, two ways of looking at it. They're cross-linked, so you can hop between.</p>
+
+  <div class="cards" style="grid-template-columns: repeat(2, 1fr);">
+    <a class="view-card panorama" href="beauchamp_panorama.html">
+      <div class="num">★ PANORAMA</div>
+      <div class="name">Panoramic Tree</div>
+      <p>One single canvas with every person in the family laid out in 2D — the medieval spine running top-to-bottom, the Earls of Warwick branching right, Powick → Lygon → Brideshead spreading further right, the Bletso → Tudor crown branch on the far right, Edmund's nine children in a horizontal sibling row, and Beth's maternal Carlson tree sprouting left at her generation. <strong>Drag to pan, scroll-wheel to zoom, click any name for full details and sources, click branch labels to collapse/expand entire limbs.</strong> A minimap in the corner shows where you are in the whole tree.</p>
+      <span class="open">Open the panorama</span>
+    </a>
+    <a class="view-card ref" href="beauchamp_reference.html">
+      <div class="num">REFERENCE</div>
+      <div class="name">Reference Document</div>
+      <p>The deep narrative. Twelve sections covering each branch in turn — the Bedford Beauchamps, the Worcestershire trunk, the senior Earls of Warwick, Powick, the Lygons of Madresfield, the Bletso branch and the Tudor crown, the cadet baronies, the maternal lines, the Mayflower investor, Edmund the Immigrant, and the modern surnames. With sources.</p>
+      <span class="open">Open the reference</span>
+    </a>
+  </div>
+
+  <div class="summary">
+    <h3>What's been added since the original Lorraine Shoemaker compilation</h3>
+    <p>The original document told a single-spine story: thirty-one generations from Hugh of Bedford down to Kip. This expansion fills out the <em>branches</em> on either side of that spine — the cadet lines and the maternal lines that the original compilation only gestured at.</p>
+    <p>The senior <strong>Earls of Warwick</strong> after Guy (gens 9–14) — Thomas the Garter founder, Thomas the Lord Appellant imprisoned in the tower that bears his name, Richard the regent of France and tutor to Henry VI, Henry the Duke of Warwick crowned "King of the Isle of Wight," Anne the wife of Warwick the Kingmaker, Anne Neville the Queen of England, and Edward of Middleham — the only person of Beauchamp blood ever to be heir apparent to the English crown.</p>
+    <p>The <strong>Bletso branch</strong> (Margaret Beauchamp of Bletso → Margaret Beaufort → Henry VII) — through which every English monarch since Henry VIII descends. The <strong>Powick → Lygon → Madresfield → Brideshead</strong> chain, including Hugh Lygon as the model for Sebastian Flyte. The <strong>Mortimer descent</strong> from your 21× great-grandmother Joan to the Yorkist crown of Edward IV.</p>
+    <p>The seven <strong>maternal lines</strong> that built medieval England — Taillebois, d'Abetot, de Braose, Mortimer, Mauduit, Fitz-John, de Toni — each with the major historical figure it brings into the tree.</p>
+    <p>Edmund Beauchamp the Immigrant's <strong>nine children</strong>, with documented birthdates and the Turpin marriage in 1692 that begins two centuries of intermarriage with eastern-shore cousins. The <strong>Eastern Shore cousinage</strong>: Davis, Handy, Hayman, Turpin. Notable later cousins including <strong>Fontaine Beauchamp</strong> (DAR-recognised Revolutionary patriot), <strong>Rev. William Beauchamp</strong> (Methodist Episcopal minister), and the infamous <strong>Jereboam Beauchamp</strong> (the 1825 Kentucky Tragedy).</p>
+    <p>And on the other end of the line, the <strong>five modern surnames</strong> — Calhoun, Ansman, Gaddis, Hicks, Carlson — with their etymologies, their geographic patterns, and the late-19th- and 20th-century migrations that brought them together in central Pennsylvania and Vermont.</p>
+
+    <p style="border-top: 1px dotted var(--rule); padding-top: 18px; margin-top: 18px;">A separate working page (<strong>Maternal Line</strong>) covers your mother Beth Carlson-Gaddis's side in detail: the Pschigoda → Fehlberg line out of St. Joseph, MI, the blended Patricia-centered Carlson sibling group, the Norwood-vs-Carlson distinction (Nancy was Verrill Norwood's daughter; the other nine including Beth were Gordon Carlson Jr.'s), and the Water Street Glassworks Blossom Fehlberg Metal Studio in Benton Harbor.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="n">31</div><div class="l">generations</div></div>
+      <div class="stat"><div class="n">~950</div><div class="l">years</div></div>
+      <div class="stat"><div class="n">7</div><div class="l">cadet branches</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">crossings of the Atlantic</div></div>
+    </div>
+  </div>
+
+  <footer>
+    Originally compiled by Lorraine Shoemaker for Frances Lorraine Ansman<br>
+    expanded May 2026
+  </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Beauchamp Family — Reference Document</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:        #f5efe2;
+  --paper-shade:  #ebe2cf;
+  --ink:          #2a2118;
+  --ink-soft:     #5a4a38;
+  --ink-faded:    #8a7860;
+  --rule:         #c8b89a;
+  --accent:       #7a1f1f;
+  --gold:         #a07d2c;
+  --green:        #3d5a3d;
+  --purple:       #4a3868;
+  --slate:        #5e6b7a;
+  --sienna:       #8a5a2b;
+  --shadow:       rgba(60, 40, 20, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(160, 125, 44, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(122, 31, 31, 0.04) 0%, transparent 40%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.13  0 0 0 0 0.09  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.65;
+  padding: 0 24px;
+  min-height: 100vh;
+}
+
+/* topbar */
+.topbar {
+  background: rgba(245, 239, 226, 0.95);
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  margin: 0 -24px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.topbar-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 24px; align-items: center; }
+.brand { font-family: 'Cinzel', serif; font-weight: 600; font-size: 15px; letter-spacing: 0.12em; }
+.brand em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; color: var(--accent); letter-spacing: 0.02em; text-transform: lowercase; }
+.topbar nav { display: flex; gap: 18px; }
+.topbar nav a { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ink-soft); text-decoration: none; font-size: 16px; border-bottom: 1px solid transparent; padding-bottom: 1px; }
+.topbar nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.topbar nav a:hover { color: var(--accent); }
+
+.wrap { max-width: 880px; margin: 0 auto; padding: 80px 0 120px; }
+
+/* Front matter */
+.front { text-align: center; margin-bottom: 60px; position: relative; }
+.front h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(30px, 5vw, 46px);
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.front h1 em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  color: var(--accent);
+}
+.front .sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink-soft);
+  margin-top: 8px;
+}
+.front .compiled {
+  font-family: 'EB Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  margin-top: 28px;
+}
+
+/* Table of contents */
+.toc {
+  background: rgba(255, 251, 240, 0.55);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 28px 36px;
+  margin: 0 0 80px;
+}
+.toc .label {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 18px;
+}
+.toc h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+.toc ol {
+  list-style: none;
+  counter-reset: toc;
+  padding-left: 0;
+}
+.toc li {
+  counter-increment: toc;
+  padding: 6px 0;
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  border-bottom: 1px dotted var(--rule);
+  display: flex;
+  align-items: baseline;
+}
+.toc li::before {
+  content: counter(toc, upper-roman) " · ";
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  flex-shrink: 0;
+  margin-right: 14px;
+  min-width: 36px;
+}
+.toc li:last-child { border-bottom: none; }
+.toc a { color: var(--ink); text-decoration: none; flex: 1; }
+.toc a:hover { color: var(--accent); }
+.toc a em { color: var(--accent); font-style: italic; }
+.toc li .pages {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-faded);
+  font-size: 13px;
+  margin-left: 14px;
+}
+
+/* Section */
+.section { margin: 80px 0; scroll-margin-top: 80px; }
+.section .roman {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 40px);
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.1;
+  margin-bottom: 32px;
+}
+.section h2 + .lede {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink-soft);
+  text-align: center;
+  max-width: 640px;
+  margin: -16px auto 36px;
+  line-height: 1.4;
+}.section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--ink);
+  margin: 28px 0 12px;
+}
+.section h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 24px 0 8px;
+}
+.section p { margin-bottom: 12px; }
+.section p strong { color: var(--ink); font-weight: 600; }
+.section p em { color: var(--accent); font-style: italic; }
+.section a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted; }
+.section a:hover { border-bottom-style: solid; }
+
+.pull {
+  background: rgba(122, 31, 31, 0.04);
+  border-left: 3px solid var(--accent);
+  padding: 16px 22px;
+  margin: 20px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.55;
+}
+.pull strong {
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.callout {
+  background: rgba(160, 125, 44, 0.07);
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  padding: 24px 32px;
+  margin: 30px 0;
+}
+.callout .label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.callout h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--ink);
+  text-align: center;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 14px;
+}
+
+.divider {
+  text-align: center;
+  margin: 36px 0;
+  color: var(--gold);
+  letter-spacing: 0.5em;
+  font-size: 13px;
+}
+
+.figures {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 24px 0;
+}
+.figure-card {
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  padding: 14px 18px;
+  background: rgba(255, 251, 240, 0.5);
+  font-size: 14.5px;
+  border-radius: 2px;
+}
+.figure-card.warwick  { border-left-color: var(--accent); }
+.figure-card.powick   { border-left-color: var(--green); }
+.figure-card.bletso   { border-left-color: var(--purple); }
+.figure-card.maternal { border-left-color: var(--slate); }
+.figure-card.colonial { border-left-color: var(--sienna); }
+.figure-card .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.figure-card .ep {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--accent);
+  margin: 1px 0 4px;
+}
+.figure-card .d { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+
+.figure-card.full { grid-column: 1 / -1; }
+
+footer {
+  margin-top: 100px;
+  padding-top: 40px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-faded);
+  font-size: 15px;
+}
+footer .glyph { color: var(--gold); letter-spacing: 0.5em; display: block; margin-bottom: 14px; }
+footer .sources {
+  margin-top: 20px;
+  font-style: normal;
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  color: var(--ink-faded);
+  line-height: 1.7;
+  text-align: left;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+footer .sources strong {
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink-soft);
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  body { padding: 0 16px; font-size: 16px; }
+  .topbar { margin: 0 -16px; padding: 10px 14px; }
+  .topbar-inner { gap: 12px; flex-wrap: wrap; }
+  .wrap { padding: 36px 0 80px; }
+  .figures { grid-template-columns: 1fr; }
+  .toc { padding: 18px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand">Beauchamp <em>family</em></span>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="beauchamp_panorama.html">Panorama</a>
+      <a href="beauchamp_reference.html" class="active">Reference</a>
+      <a href="beauchamp_summary.html">Summary</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="front">
+    <h1>The Beauchamp <em>family</em> Line</h1>
+    <div class="sub">A branch-by-branch reference · expanded narrative<br>From Hugh de Beauchamp of Bedford (d. c. 1101) to Kip Gaddis (b. 21st c.)</div>
+    <div class="compiled">After Lorraine Shoemaker · expanded with primary-source research</div>
+  </div>
+
+  <!-- ==================== TABLE OF CONTENTS ==================== -->
+  <div class="toc">
+    <div class="label">CONTENTS</div>
+    <h2>Twelve sections · nine hundred and fifty years</h2>
+    <ol>
+      <li><a href="#sec1">Foreword — what this document is</a></li>
+      <li><a href="#sec2">The Bedford Beauchamps and the Norman Origin</a></li>
+      <li><a href="#sec3">The Worcestershire Trunk — and the Earldom of Warwick</a></li>
+      <li><a href="#sec4">The Senior Earls of Warwick — when Beauchamp blood reached the throne</a></li>
+      <li><a href="#sec5">The Powick Branch — your direct line</a></li>
+      <li><a href="#sec6">The Lygons of Madresfield and <em>Brideshead Revisited</em></a></li>
+      <li><a href="#sec7">The Bletso Branch and the Tudor Crown</a></li>
+      <li><a href="#sec8">Other Cadet Baronies — Holt, Hatch, St Amand</a></li>
+      <li><a href="#sec9">The Maternal Lines — what the women brought</a></li>
+      <li><a href="#sec10">Cosgrove and the Mayflower Investor</a></li>
+      <li><a href="#sec11">Edmund Beauchamp the Immigrant and Eastern-Shore Maryland</a></li>
+      <li><a href="#sec12">The Modern Lines — Calhoun, Ansman, Gaddis, Hicks, Carlson</a></li>
+    </ol>
+  </div>
+
+  <!-- ==================== I · FOREWORD ==================== -->
+  <div class="section" id="sec1">
+    <div class="roman">I · FOREWORD</div>
+    <h2>What this document is</h2>
+    <p class="lede">An expansion of the original Lorraine Shoemaker compilation, branch by branch, with the cadet lines and notable cousins recovered.</p>
+
+    <p>This document supplements the main lineage charts (<a href="beauchamp_tree_interactive.html">interactive</a>, <a href="beauchamp_tree_visual.html">visual</a>) with a deeper narrative: branch by branch, with the cadet lines, the maternal pedigrees, the colonial-era cousinages, and the modern surnames that converged in the 20th century to produce this household.</p>
+
+    <p>The starting point is the family tree compiled by <strong>Lorraine Shoemaker</strong> for Frances Lorraine Ansman in the late twentieth century — a genealogical essay grounded in three principal sources: <strong>Stith Thompson's "The Beauchamp Family"</strong> (Filson Club History Quarterly, 1954); <strong>Clayton Torrence's <em>Old Somerset on the Eastern Shore of Maryland</em></strong> (1935); and <strong>Mary Turpin Layton's "Edmund Beauchamp of Maryland"</strong> (D.A.R. Magazine, April 1932). To Shoemaker's spine this document adds research from G. E. Cokayne's <em>Complete Peerage</em>, the Heralds' Visitation of London (1633), Bradford's <em>Of Plymouth Plantation</em>, and contemporary genealogical reference at WikiTree, FindAGrave, and FamilySearch — together with secondary literature on the major figures (the Earls of Warwick, the Mortimers, the Lygons of Madresfield, the Plymouth Undertakers, the Eastern Shore intermarriages, the modern Pennsylvania surnames).</p>
+
+    <div class="pull">
+      <strong>A note on certainty</strong>
+      Every genealogical document of this scale rests on a mix of established scholarship and family tradition. This document is honest about that. Where modern historians regard a connection as plausible-but-unproven (Hugh of Bedford to the Worcestershire trunk; Cosgrove to Powick) it is flagged as such. Where the original Lorraine Shoemaker compilation contains an error (Edward Beauchamp's wife was Naomi Fountain, not Sarah Dixon — Sarah was Edward's mother) it is corrected and the correction is noted. Where a famous descendant is conventionally cited but not perfectly documented (the Powick descent of the Cosgrove yeomen) the footnote stands.
+    </div>
+
+    <p>The Beauchamp story is unusual for an American family in that it has both ends solidly attached: a Domesday baron at one end, a present-day engineering student at the other, with thirty-one generations of often-documentable descent in between. Most of the real research effort has gone into the middle — into the cadet branches that ran alongside, the maternal lines that married in, and the cousins who became Knights of the Garter, regents of France, ancestors of the Tudor crown, and (in one dramatic case) the perpetrator of the most sensational murder in antebellum America.</p>
+  </div>
+
+  <!-- ==================== II · BEDFORD ==================== -->
+  <div class="section" id="sec2">
+    <div class="roman">II · NORMAN ORIGINS · c. 1066–1130</div>
+    <h2>The Bedford Beauchamps</h2>
+    <p class="lede">Domesday wealth, Anarchy politics, the eight-week siege of 1224 — and a male line that ran out by 1300.</p>
+
+    <p><strong>Hugh de Beauchamp</strong> (d. after 1100) is the founder of the English Beauchamp story. A Norman tenant-in-chief, he held <strong>43 manors in Bedfordshire alone</strong> at the Domesday survey of 1086, with additional holdings in Buckinghamshire and Hertfordshire — the bulk of the lands taken from the Anglo-Saxon Eskil of Ware. His name suggests origins at one of the villages in Normandy called <em>Beauchamps</em> (Bellocampo, "fine field"), most plausibly Beauchamps near Saint-Lô in the Cotentin, or possibly the Beauchamps of Calvados. He held <strong>Bedford Castle</strong>, witnessed a charter of William the Conqueror as "sheriff" between 1070 and 1089, and left several sons — Simon, Robert, Payn, and Miles — to continue the line.</p>
+
+    <p>His wife <strong>Adeliza Matilda Taillebois</strong> brought a particularly distinguished pedigree of her own: through her father <strong>Ivo de Taillebois</strong>, who fought at Hastings and rose to be Lord of Kendal in Westmorland and sheriff of Lincolnshire, and through her mother <strong>Lucy of Bolingbroke</strong>, one of the great heiresses of England. Lucy was herself daughter of Turold of Lincoln, and her later marriages bore the 1st Earl of Lincoln (William de Roumare) and the 2nd Earl of Chester (Ranulf de Gernon). Through Lucy the Bedford Beauchamps connect to the Mercian house of Earl Leofric and Lady Godiva.</p>
+
+    <p>Hugh's son <strong>Simon de Beauchamp</strong> (d. before 1137) inherited Bedford Castle and the bulk of the estates. He founded <strong>Newnham Priory</strong> near Bedford. His son <strong>Pain (Payn) de Beauchamp</strong> married Rohese de Vere, daughter of Aubrey de Vere — Rohese became a major figure in the Anarchy of Stephen's reign. The Bedford line ran on through the 12th century and into the great political crisis of the early 13th: a William de Beauchamp of Bedford was one of the Magna Carta-era barons, an opponent of King John. When civil war broke out, Bedford Castle was seized and held by Falkes de Bréauté's men against Henry III. In the summer of 1224 Hubert de Burgh laid siege for eight weeks; the garrison was hanged, the castle slighted, and the Beauchamps were forbidden to refortify it. The family recovered the manor of Bedford but never fully recovered their regional dominance.</p>
+
+    <p>The senior male Bedford line ran out in the late 13th century. The barony fell into abeyance among coheiresses; the Mowbrays acquired the largest share, through Maud de Beauchamp's marriage to Roger de Mowbray. Other shares went to the Latimers and others. By 1300 the Beauchamps of Bedford were a memory.</p>
+
+    <h3>The Dugdale connection</h3>
+    <p>The longstanding family tradition — set down by Sir William Dugdale in his <em>Antiquities of Warwickshire</em> (1656) and <em>Baronage of England</em> (1675–76) and reproduced in Burke's Peerage — holds that the Worcestershire Beauchamps (and so the entire Earls of Warwick line, and so this family) descend from a younger son of Hugh of Bedford. The proposed link is <strong>Walter de Beauchamp of Elmley</strong>, the next generation, who married Urse d'Abetot's daughter and through her acquired the Worcestershire shrievalty.</p>
+
+    <p>Modern prosopographers — notably K. S. B. Keats-Rohan in <em>Domesday Descendants</em> — regard this as plausible but not proven. The two families share the toponym and similar arms patterns, but no contemporary charter unambiguously establishes the relationship. The family hop from Bedford to Elmley between Generations 1 and 2 should be read as <em>possible</em> rather than <em>proven</em>. The traditional pedigree is followed here because it is what the family has always claimed and because the alternative — accepting that this line has no documented Norman origin earlier than Walter of Elmley c. 1108 — would be the more revisionist choice.</p>
+  </div>
+
+  <!-- ==================== III · WORCESTERSHIRE TRUNK ==================== -->
+  <div class="section" id="sec3">
+    <div class="roman">III · THE WORCESTERSHIRE TRUNK · 1108–1268</div>
+    <h2>From Walter of Elmley to the Earldom of Warwick</h2>
+    <p class="lede">Six generations carry the family from a Henrician sheriffdom to one of the half-dozen great earldoms of England.</p>
+
+    <p><strong>Walter de Beauchamp of Elmley</strong> (d. 1130–1133) is the first solid figure of the line. One of King Henry I's "new men" — a class of administratively talented royal servants the king elevated above older feudal aristocracies — Walter is found in royal charters from 1108–1111 onward. He inherited the Worcestershire estates and the hereditary office of <strong>Sheriff of Worcestershire</strong> through his marriage to <strong>Emmeline d'Abetot</strong>, daughter and heiress of <strong>Urse d'Abetot</strong> (c. 1040–1108) — a notorious figure of the Conquest generation, sheriff of Worcestershire from 1069, infamous for the harshness of his rule and for siting his castle so close to Worcester Cathedral that Archbishop Ealdred of York pronounced over him the rhyming Old English curse: <em>"Hattest thu Urse, have thu Godes kurs"</em> ("You are called Urse — have God's curse"). Urse's son Roger was exiled c. 1110 for ordering the murder of a royal officer, and the lands escheated through Emmeline to Walter. Through them, the Beauchamps would hold the hereditary <strong>Sheriffdom of Worcestershire</strong> and the office of <strong>Constable of Worcester Castle</strong> for over a century.</p>
+
+    <p>Henry I granted Walter the right to hunt wolves and foxes in the royal forests of Worcestershire — and the privilege of keeping pheasants on his own lands, fining anyone who hunted them without leave. <strong>Elmley Castle</strong>, near Bredon Hill in southeastern Worcestershire, would remain the principal Beauchamp residence for the next 158 years.</p>
+
+    <h3>Generations three through five</h3>
+    <p>The line continued through <strong>William de Beauchamp</strong> (d. 1170), who supported the Empress Maud against King Stephen during the Anarchy and was restored to all honours by Henry II in 1153, marrying <strong>Maud de Braose</strong> of the Marcher Lords of Bramber and Gower; through <strong>William II de Beauchamp</strong> (d. 1197), Lord of Elmley and hereditary Sheriff and Constable of Worcester, who married <strong>Joan Walerie</strong>; and through <strong>Walter II de Beauchamp</strong> (1192/3–1236), one of the most consequential figures of the line.</p>
+
+    <p>Walter II was orphaned at age five. His wardship and marriage were sold by the crown — first to William de Braose, then for the staggering sum of <strong>3,000 marks</strong> to Roger Mortimer of Wigmore, who married him to his daughter <strong>Joan Mortimer</strong> as part of the deal. Walter held the shrievalty during the First Barons' War and joined the rebel cause in May 1216, supporting Prince Louis of France's invasion. He was excommunicated, lost his lands, then reconciled with the new boy-king Henry III after John's death, and was restored as Sheriff of Worcestershire and an itinerant justice. He died on 14 April 1236.</p>
+
+    <p>The Mortimer marriage that Walter II's wardship had purchased proved consequential beyond anything its parties could have foreseen. Joan's family the <strong>Mortimers of Wigmore</strong> would, within a century, take a leading role in English politics; within two centuries, they would acquire a senior claim to the throne. (See Section IX on the maternal lines.)</p>
+
+    <h3>The acquisition of Warwick</h3>
+    <p><strong>William III de Beauchamp</strong> (d. 1268) is the generation in which the Beauchamps moved from regional baronage to the high nobility of England. He married <strong>Isabel Mauduit</strong>, daughter of William Mauduit of Hanslape and sister and co-heiress of <strong>William Mauduit, 8th Earl of Warwick</strong>. When the 8th Earl died in 1268 without surviving issue, the earldom passed through his sister to his nephew, William and Isabel's son.</p>
+
+    <p>The earldom of Warwick had a long previous history: <strong>Henry de Beaumont (de Newburgh), 1st Earl of Warwick</strong> (c. 1048–1119) had been brother of the 1st Earl of Leicester and an intimate of William the Conqueror. Six Newburgh earls held Warwick Castle through the Anarchy and into Henry III's reign. When Thomas, 6th Earl, died in 1242, his sister Margery became countess in her own right; she died childless, and the title passed to her cousin William Mauduit, whose mother Alice was daughter of Waleran 4th Earl of Warwick. Through Mauduit hands the earldom moved one further generation before passing — through Isabel — to the Beauchamps.</p>
+
+    <p>The newly-elevated <strong>William de Beauchamp, 9th Earl of Warwick</strong> (c. 1237–1298) — first Beauchamp Earl of Warwick — distinguished himself in the Welsh and Scottish wars under Edward I. He married <strong>Maud Fitz-John</strong>, who through her father John FitzGeoffrey (Justiciar of Ireland) descended from <strong>Geoffrey FitzPiers, 1st Earl of Essex</strong> (c. 1162–1213), Chief Justiciar of England under Richard I and John — one of the great architects of the Angevin state.</p>
+
+    <h3>Guy de Beauchamp, 10th Earl — the pivotal generation</h3>
+    <p><strong>Guy de Beauchamp, 10th Earl of Warwick</strong> (c. 1272–1315), is the figure on whom the entire later geometry of this tree turns. From his eldest son Thomas the senior earldom of Warwick continues for another five generations until Bosworth ends it; from a younger son the Powick cadet branch begins — the line through which this family descends.</p>
+
+    <p>Guy distinguished himself at the Battle of Falkirk and was rewarded with extensive grants of land in Scotland. He possessed an education, contemporaries said, "seldom found in the higher nobility of his age": his personal library catalog survives, full of Anglo-Norman romances on Charlemagne, Alexander, the Holy Grail, and the lives of Titus and Vespasian — one of the most interesting documented book collections of the fourteenth century.</p>
+
+    <p>In 1310 he was named to the parliamentary commission "for the well governing of the kingdom" — that is, a Lord Ordainer. In 1312 he <strong>personally captured Piers Gaveston</strong>, Edward II's hated favourite, taking him from the custody of the Earl of Pembroke and ordering his beheading at Blacklow Hill on Warwick lands. Edward II, in furious revenge, nicknamed Guy "the Black Dog of Arden." When Guy died at Warwick Castle on 12 August 1315, contemporaries supposed him to have been poisoned in retaliation by Gaveston's friends.</p>
+
+    <p>Guy's wife <strong>Alice de Toni</strong> brought one of the oldest Norman pedigrees: the Toni (Tosny) family descended from <strong>Roger I de Tosny</strong> (d. c. 1040), a famous warrior who had fought the Moors in Catalonia. The Tosny who held the standard of Normandy at Hastings was an ancestor (the honour, by tradition, was declined that day). Through Alice's eventual inheritance from her brother Robert (d. 1309 childless) the Beauchamps acquired the great Tosny holdings at Flamstead in Hertfordshire and Clifford in the Welsh March.</p>
+  </div>
+
+  <!-- ==================== IV · SENIOR EARLS OF WARWICK ==================== -->
+  <div class="section" id="sec4">
+    <div class="roman">IV · THE SENIOR EARLS OF WARWICK · 1313–1485</div>
+    <h2>When Beauchamp blood reached the throne</h2>
+    <p class="lede">Five Earls of Warwick after Guy — and ultimately a Queen of England, then Bosworth.</p>
+
+    <p>From Guy's eldest son the senior line continued for six generations and produced some of the most famous Englishmen of the late Middle Ages.</p>
+
+    <h3>Thomas, 11th Earl of Warwick (1313/14–1369) — Garter Knight, Crécy, Poitiers</h3>
+    <p>Thomas Beauchamp, 11th Earl, was one of the great soldiers of the fourteenth century. Marshal of England. <strong>Founder Knight of the Order of the Garter</strong> in 1348 — one of the original twenty-six who joined Edward III in the new chivalric order. He fought at <strong>Crécy</strong> (1346), <strong>Poitiers</strong> (1356) under the Black Prince, and on numerous Scottish and French campaigns; served as the Black Prince's principal lieutenant in Aquitaine. He rebuilt much of <strong>Warwick Castle</strong>, including <strong>Caesar's Tower</strong> and <strong>Guy's Tower</strong>, in the form they still hold. He died of plague at Calais in November 1369. His wife was <strong>Katherine Mortimer</strong>, daughter of the Roger Mortimer who had toppled Edward II — closing a remarkable circle: a Mortimer woman married into the Beauchamps in 1212, and a Beauchamp earl married her great-great-granddaughter in the 1340s.</p>
+
+    <h3>Thomas, 12th Earl (c. 1339–1401) — Lord Appellant</h3>
+    <p>Second son who succeeded his father after his elder brother Guy predeceased. He was one of the five <strong>Lords Appellant</strong> of 1387–88 who curbed Richard II's favourites in the <strong>Merciless Parliament</strong> — purging the king's circle and trying their political opponents for treason. In 1397 Richard struck back: the earl was arrested, condemned for treason, his earldom forfeited, and he was imprisoned in the Tower of London. The cell where he was held — and where his graffiti can still be seen scratched into the wall — is called the <strong>Beauchamp Tower</strong> to this day. He was then exiled to the Isle of Man. Henry IV's accession in 1399 restored him; he died at Warwick in 1401. He married Margaret Ferrers of Groby.</p>
+
+    <h3>Richard, 13th Earl (1382–1439) — tutor of Henry VI</h3>
+    <p>Richard Beauchamp, 13th Earl of Warwick, is the towering figure of the line and one of the most renowned Englishmen of his century — subject of the magnificent illustrated <strong>Beauchamp Pageant</strong> (c. 1483–85), which survives in the British Library and supplies the family with its most famous visual record.</p>
+
+    <p>Knighted at Henry IV's coronation. Fought at <strong>Shrewsbury (1403)</strong> against Hotspur's Percys. Made pilgrimage to the Holy Land in 1408–10. Became one of Henry V's chief captains in France: present at <strong>Agincourt (1415)</strong>, commander at numerous sieges, and negotiator of the <strong>Treaty of Troyes (1420)</strong> that made Henry V heir to the French crown. On Henry V's death in 1422 he was named tutor and governor to the infant <strong>Henry VI</strong>, a role he held formally from 1428. Appointed Lieutenant of France and Normandy in 1437, he died at Rouen on 30 April 1439. His extraordinary tomb in the <strong>Beauchamp Chapel at St Mary's, Warwick</strong> is among the masterpieces of English medieval funerary art — a gilt-bronze effigy lying beneath a hearse-like canopy.</p>
+
+    <p>His daughters by Elizabeth Berkeley were the coheirs of the Berkeley/Lisle inheritance. His second wife Isabel Despenser bore the next generation, including Henry and Anne.</p>
+
+    <h3>Henry, 14th Earl & 1st Duke of Warwick (1425–1446)</h3>
+    <p>Childhood companion of Henry VI, who created him <strong>Duke of Warwick in 1445</strong> — the only Beauchamp ever to hold a dukedom — and is said to have crowned him <em>King of the Isle of Wight</em> in a personal ceremony, an extraordinary mark of royal favour. He died aged twenty-one on 11 June 1446, leaving an infant daughter who briefly held the earldom in her own right and died at five.</p>
+
+    <h3>Anne Beauchamp, Countess of Warwick (1426–1492) — wife of "Warwick the Kingmaker"</h3>
+    <p>Henry's full sister and ultimate heir. She married <strong>Richard Neville</strong> (1428–1471), who became 16th Earl of Warwick <em>jure uxoris</em> in 1449 — the dominant magnate of the Wars of the Roses, who first <em>made</em> Edward IV king (1461) and then <em>unmade</em> him (briefly restoring Henry VI in 1470) before being killed at the <strong>Battle of Barnet</strong> on 14 April 1471. After Barnet and the Lancastrian collapse at Tewkesbury (4 May 1471), Anne was stripped of her inheritance by act of parliament in 1474, treated as legally dead so her two daughters' husbands (George, Duke of Clarence, and Richard, Duke of Gloucester) could partition the Beauchamp/Despenser/Neville estates. She was restored under Henry VII in 1487 but obliged to surrender most lands to the crown.</p>
+
+    <h3>Anne Neville, Queen of England (1456–1485) — when Beauchamp blood reached the throne</h3>
+    <p>The Kingmaker's younger daughter — and so the granddaughter of Anne Beauchamp the Countess. Married first to <strong>Edward of Westminster, Prince of Wales</strong> (Henry VI's only son, killed at Tewkesbury in 1471), and second in 1472 to <strong>Richard, Duke of Gloucester</strong>. When Richard seized the throne in 1483 she became <strong>Queen of England</strong>, crowned with him on 6 July 1483. She died at Westminster on 16 March 1485, probably of tuberculosis, a few months before Bosworth.</p>
+
+    <h3>Edward of Middleham, Prince of Wales (c. 1473/76–1484)</h3>
+    <p>Richard III and Anne Neville's only legitimate child — and the <em>only</em> person of Beauchamp blood ever to be heir apparent to the English crown. Born at Middleham Castle in Yorkshire, created Prince of Wales at York on 24 August 1483. He died suddenly at Middleham on 9 April 1484, aged about ten — devastating his parents and effectively ending the direct Yorkist succession. With his death, and his mother's the following year, <strong>Bosworth (22 August 1485)</strong> ended the dynasty: Richard III killed in battle by Henry Tudor's army, and the senior Earls of Warwick line — and the Beauchamp claim — extinguished.</p>
+
+    <p class="pull"><strong>Coda</strong>The Beauchamp blood that briefly reached the throne in 1483 went no further than Edward of Middleham. <em>But the Beauchamp blood that reached the throne the second time around — through the Bletso branch (Section VII) — produced the entire Tudor dynasty and every English monarch since.</em></p>
+  </div>
+
+  <!-- ==================== V · POWICK BRANCH ==================== -->
+  <div class="section" id="sec5">
+    <div class="roman">V · THE POWICK BRANCH · 14th–16th c.</div>
+    <h2>Your direct cadet line</h2>
+    <p class="lede">A Speaker, a Treasurer of England, and finally an heiress whose marriage carried the Beauchamp name into the Lygons of Madresfield.</p>
+
+    <p>From a younger son of the senior Worcestershire Beauchamps — most genealogies place the cadet split through a junior son of Guy 10th Earl, though some authorities locate it a generation earlier with William 9th Earl — the <strong>Beauchamps of Powick</strong> emerged as a substantial Worcestershire knightly family. They held the manor of <strong>Powick</strong> in Worcestershire and rose through royal service across the 14th and 15th centuries.</p>
+
+    <p>Eight generations of the line are preserved by name in the heralds' visitations — <em>John, William, John, Galfridius, John, Thomas, John, Thomas</em> — though personal detail is scant for most of them. The line emerges back into clear daylight with Thomas Beauchamp of Cosgrove c. 1550 (Section X). Among the Powick generations whose careers can be reconstructed:</p>
+
+    <div class="figures">
+      <div class="figure-card powick">
+        <div class="name">Sir Walter Beauchamp</div>
+        <div class="ep">Speaker of the House of Commons (1416)</div>
+        <div class="d">d. 1430. A trusted lawyer and councillor under Henry V. Steward of the king's household. One of Henry V's executors. Spoke for the Commons in the Parliament that followed Agincourt.</div>
+      </div>
+      <div class="figure-card powick">
+        <div class="name">Sir John Beauchamp, 1st Baron Beauchamp of Powick</div>
+        <div class="ep">Treasurer of England (1450–52)</div>
+        <div class="d">c. 1409–1475. The most prominent of the line. Privy councillor under Henry VI; created Baron Beauchamp of Powick by writ of summons in 1447. Successfully transferred his loyalty to Edward IV during the Wars of the Roses — a feat of political navigation in a generation that destroyed many of his peers.</div>
+      </div>
+      <div class="figure-card powick">
+        <div class="name">Richard Beauchamp, 2nd Baron Beauchamp of Powick</div>
+        <div class="d">c. 1435–1503. Last male of the Powick line. Married Margaret Ferrers. Less politically prominent than his father; the barony fell into abeyance at his death.</div>
+      </div>
+      <div class="figure-card powick">
+        <div class="name">Anne Beauchamp</div>
+        <div class="ep">heiress of Powick</div>
+        <div class="d">c. 1472–1535. Daughter of Richard, 2nd Baron Beauchamp of Powick, and Margaret Ferrers. Married <strong>Thomas Lygon of Madresfield</strong>, c. 1495. Through this match the Beauchamp inheritance — and, three centuries later, the right to the surname itself — passed into the Lygon family.</div>
+      </div>
+    </div>
+
+    <p>The Powick branch did not so much die out as merge by heiress into the Lygon family. The Beauchamp inheritance in Worcestershire — including portions of the Powick estates — followed the female line into Madresfield, where it would lie for three centuries before being formally re-acknowledged by the crown.</p>
+
+    <h3>The intervening generations — 14th to 16th c.</h3>
+    <p>From Anne Beauchamp's elder brother (or, depending on the source, her father's younger brother) descend the eight quiet generations whose names the heralds' visitations preserve but whose careers leave little trace: <em>John → William → John → Galfridius → John → Thomas → John → Thomas</em>. The line settles in Northamptonshire by Tudor times — at Cosgrove, just north of Stony Stratford on the Bedfordshire border — as part of the broader downward drift from cadet Worcester knighthood into prosperous-yeoman gentry. The 1633 Visitation of London, which recorded John Beauchamp's pedigree, accepted the descent from Powick; modern genealogists (J. Horace Round and his successors) have been more skeptical of the intermediate links. Treat the Powick descent as a plausible family tradition partially supported by the Visitation rather than as fully proven.</p>
+  </div>
+
+  <!-- ==================== VI · LYGONS / MADRESFIELD / BRIDESHEAD ==================== -->
+  <div class="section" id="sec6">
+    <div class="roman">VI · MADRESFIELD COURT · 1419 – present</div>
+    <h2>The Lygons of Madresfield and <em>Brideshead Revisited</em></h2>
+    <p class="lede">A house in the Malvern Hills, an 1815 earldom, a 1931 scandal, and the great novel of twentieth-century English Catholicism.</p>
+
+    <p><strong>Madresfield Court</strong> in the Malvern Hills of Worcestershire is the rare English country house that has been continuously occupied by the same family for nine hundred years. The Lygons came there in 1419, when <strong>Thomas Lygon</strong> (an earlier Thomas) married Joan Bracy, the heiress of the Bracy family who had held the manor since at least 1196. Three generations later, in the late 15th century, <strong>another Thomas Lygon</strong> — descendant of the first — married <strong>Anne Beauchamp</strong>, the heiress of the Beauchamps of Powick, bringing Beauchamp blood and (eventually) the seed of the Beauchamp surname into the Lygon line.</p>
+
+    <p>For three centuries the Lygons held Madresfield as Worcestershire gentry — Tudor knights, Stuart loyalists, Hanoverian Whigs. The political resurfacing came at the end of the eighteenth century with <strong>William Lygon (1747–1816)</strong>, the head of the family, an MP for Worcestershire, and by 1809 the holder of an income exceeding £40,000 a year. He was created <strong>Baron Beauchamp of Powick</strong> in 1806 and, in 1815, <strong>Earl Beauchamp</strong> — the surname formally revived in explicit recognition of his descent from Anne Beauchamp three centuries earlier.</p>
+
+    <h3>The 7th Earl Beauchamp and the 1931 scandal</h3>
+    <p>The earldom passed through the 1st Earl's sons to the <strong>6th Earl, Frederick Lygon</strong> (1830–1891), an Oxford-educated High Churchman, MP, and patron of the Anglo-Catholic revival, who restored Madresfield's chapel into one of the great Arts-and-Crafts religious interiors. His son was the most famous of the Lygon Earls Beauchamp:</p>
+
+    <p><strong>William Lygon, 7th Earl Beauchamp</strong> (1872–1938) — KG, KCMG, PC. <strong>Governor of New South Wales at age 27</strong> (1899–1901). First Commissioner of Works. Lord President of the Council. Lord Privy Seal. <strong>Liberal Leader in the House of Lords</strong> (1924–1931). Knight of the Garter (1914). Chancellor of London University. He had married <strong>Lady Lettice Grosvenor</strong>, sister of the famously dissolute <strong>Hugh "Bendor" Grosvenor, 2nd Duke of Westminster</strong> — and the marriage proved fateful.</p>
+
+    <p>In 1931 Bendor — a man of legendary spite who blamed Beauchamp for political and personal slights, and who hated the family with an intensity friends found unaccountable — exposed his brother-in-law's homosexuality to <strong>King George V</strong>. The king reportedly remarked, "I thought men like that shot themselves." Faced with prosecution under the Labouchere Amendment, the 7th Earl was forced into European exile, his career destroyed in days. He died on the Continent in 1938, his wife having abandoned him on her brother's instructions.</p>
+
+    <h3>Hugh Lygon, Sebastian Flyte, and Brideshead</h3>
+    <p>The 7th Earl's second son <strong>Hugh Patrick Lygon</strong> (1904–1936) was at Eton with <strong>Evelyn Waugh</strong> and at Oxford a member with him of the Hypocrites' Club — a student club, in Waugh's later phrase, "notorious not only for drunkenness but for flamboyance of dress and manner." Hugh carried a teddy bear about Oxford. The historian A. L. Rowse believed Hugh and Waugh to have been lovers. He died young in 1936 after a fall.</p>
+
+    <p>Waugh later denied to the Lygon family that Hugh was the model for Sebastian Flyte in <em>Brideshead Revisited</em> (1945) — but the denial fooled no one, and modern scholarship is uniformly clear that Hugh was the principal model. Madresfield Court itself, with its Arts-and-Crafts chapel and its ramifying Catholic-aesthete household, supplied many features of fictional Brideshead Castle. The 7th Earl is the model for Lord Marchmain; Bendor (the antagonist who exposes him) is the source of certain unsympathetic features attributed to other characters; the family's Catholic devotion and dynastic anxiety drive the novel's plot.</p>
+
+    <p>The 7th Earl's eldest son <strong>William Lygon, 8th Earl Beauchamp</strong> (1903–1979) succeeded in 1938 but died unmarried and without heir. <strong>The earldom — and all the Lygon Beauchamp peerages — became extinct</strong> at his death in 1979. Madresfield then passed via his sister Lady Mary Lygon to the Morrison family, who hold it today. Their estate is now occupied by their 29th generation — a curiously similar count to the thirty-one generations on this family's side.</p>
+
+    <p class="pull"><strong>Footnote</strong>The Lygons of Madresfield are your distant cousins, descended from the same medieval Beauchamp root as your direct line, but through Anne Beauchamp who married into the senior Lygon house in the late 15th century. The literary "Beauchamps" of twentieth-century England — the Marchmains, the Flytes — are kin to your line via that single 15th-century marriage.</p>
+  </div>
+
+  <!-- ==================== VII · BLETSO / TUDOR ==================== -->
+  <div class="section" id="sec7">
+    <div class="roman">VII · BLETSO BRANCH · 1340–1509</div>
+    <h2>Beauchamp blood reaches the Tudor crown</h2>
+    <p class="lede">A separate Beauchamp stock, an heiress, three marriages — and a single granddaughter who alters English history.</p>
+
+    <p>The <strong>Beauchamps of Bletso</strong> (or Bletshoe) were a Bedfordshire branch — distinct from the Worcestershire trunk, though kin at the family level. Some genealogists connect them to a junior of Walter de Beauchamp of Elmley; others treat Bletso as a separate kinship line that simply shared the surname. Either way, by the mid-fourteenth century the family was established at Bletshoe in Bedfordshire and was rising in royal service.</p>
+
+    <p><strong>Roger de Beauchamp, 1st Baron Beauchamp of Bletso</strong> (d. 1380) was summoned to Parliament in 1363, served Edward III as chamberlain, and held office as Constable of Devizes. Two short-lived successors followed. The pivotal generation came with <strong>Sir John Beauchamp of Bletsoe</strong> (d. c. 1412), whose marriage to <strong>Edith Stourton</strong> produced a daughter who would change English history.</p>
+
+    <h3>Margaret Beauchamp of Bletso (c. 1410 – before 3 June 1482)</h3>
+    <p>Margaret married three times. The middle marriage was the one of historical consequence:</p>
+
+    <p>Her <strong>first marriage</strong>, to Sir Oliver St John of Bletso (d. 1437), founded the line of the <strong>Barons St John of Bletso</strong> (created 1559, still extant) and the Earls of Bolingbroke (1624–1711, extinct). Her grandson Sir John St John was eventually summoned in 1559 as Baron St John of Bletso — a new creation, but one that explicitly acknowledged the Bletso heritage.</p>
+
+    <p>Her <strong>second marriage</strong>, to <strong>John Beaufort, 1st Duke of Somerset</strong> (a legitimised grandson of John of Gaunt and Katherine Swynford), produced one daughter — <strong>Lady Margaret Beaufort</strong> (1443–1509). Margaret Beaufort married <strong>Edmund Tudor, Earl of Richmond</strong>, in 1455 and bore his only son, the future <strong>King Henry VII</strong>, on 28 January 1457. So Margaret Beauchamp of Bletso was Henry VII's <strong>maternal grandmother</strong> — and through her, every English (and later British) monarch from Henry VIII forward descends.</p>
+
+    <p>Her <strong>third marriage</strong>, to Lionel de Welles, 6th Baron Welles, produced John Welles, 1st Viscount Welles — who himself married <strong>Cecily of York</strong>, daughter of King Edward IV, knitting the lines further into the Yorkist royal family.</p>
+
+    <div class="callout">
+      <div class="label">★ THE BLETSO INHERITANCE</div>
+      <h4>Through this single Beauchamp grandmother</h4>
+      <p>every English (and later British) monarch from Henry VIII onward — Edward VI, Mary I, Elizabeth I (who left no issue but whose Stuart successors descend through her aunt Margaret Tudor), James I, Charles I and II, William III and Anne, the Hanoverians, Victoria, the Windsors, Elizabeth II, and Charles III — descends from Margaret Beauchamp of Bletso. The Beauchamp blood that did not survive in the senior Earls of Warwick line (extinguished at Bosworth in 1485) survived instead through the cadet Bletso line and seized the English crown through the back door, by way of marriage rather than battle.</p>
+    </div>
+
+    <p>The Bletso branch is, on every measure, the most consequential cadet of the Beauchamp family. It produced no famous Earl, no Garter Knight, no Lord Appellant — only an heiress who married well three times. But the second of those marriages mattered more for the future of England than all the Earls of Warwick combined.</p>
+  </div>
+
+  <!-- ==================== VIII · OTHER CADET BARONIES ==================== -->
+  <div class="section" id="sec8">
+    <div class="roman">VIII · OTHER CADET BARONIES</div>
+    <h2>Holt, Hatch, and St Amand</h2>
+    <p class="lede">Three further Beauchamp peerages — including one constitutional milestone and one Somerset village named after the family.</p>
+
+    <h3>Beauchamp of Holt (Beauchamp of Kidderminster) — first English peerage by patent</h3>
+    <p><strong>Sir John Beauchamp of Holt, 1st Baron Beauchamp of Kidderminster</strong> (c. 1330–1388) was a younger son of the Beauchamp line at Holt Castle in Worcestershire — itself a junior of the senior Warwick stock. Favourite and chamberlain of Richard II. In 1387 the king created him Baron Beauchamp of Kidderminster <strong>by letters patent</strong> rather than by writ of summons.</p>
+
+    <p>This was the <strong>first English peerage ever created by patent</strong> — a constitutional milestone. Previously, peerages had come into existence by simple summons to Parliament; the patent created a peerage by formal grant from the crown, and so made the dignity heritable on terms specified in the document. Every modern hereditary peerage descends, in form, from this innovation.</p>
+
+    <p>The Lords Appellant — among them Sir John's distant cousin Thomas, 12th Earl of Warwick — moved against him in the Merciless Parliament of 1388. He was attainted and beheaded. His son was restored in blood but not in peerage; the barony was extinguished.</p>
+
+    <h3>Beauchamp of Hatch (Hatch Beauchamp), Somerset</h3>
+    <p>A wholly distinct Beauchamp stock — descendants of Norman tenants who settled in Somerset, holding lands under the honour of Dunster. The village of <strong>Hatch Beauchamp</strong> still bears the family name. The line ran from <strong>Robert de Beauchamp</strong> (d. c. 1206) through several generations of sheriffs and military servants. <strong>John de Beauchamp, 1st Baron Beauchamp of Hatch</strong> (c. 1274–1336) was summoned to Parliament in 1299 and served Edward I in Scotland and Edward II in Gascony. Four further barons held the title; the line ran into coheirs in 1361 (the great plague year), with the Hatch estates eventually divided among descendants of Beauchamp daughters. The <strong>Seymours of Hatch</strong> — ancestors of the Dukes of Somerset and of Queen Jane Seymour — took one of the principal beneficiary shares.</p>
+
+    <h3>Beauchamp of St Amand</h3>
+    <p>A barony fused to the Beauchamp surname through marriage. <strong>Sir William Beauchamp, 1st Baron Beauchamp of St Amand</strong> (c. 1380–1457) was son of William Beauchamp 1st Baron Bergavenny by Joan Lady St Amand. He was summoned to Parliament in 1449 as Lord Beauchamp of St Amand, fought in France under Henry V and Henry VI, and the title passed to his grandson Richard, who died without legitimate heir in 1508.</p>
+  </div>
+
+  <!-- ==================== IX · MATERNAL LINES ==================== -->
+  <div class="section" id="sec9">
+    <div class="roman">IX · MATERNAL LINES</div>
+    <h2>What the women brought</h2>
+    <p class="lede">Seven medieval women married into the Beauchamp spine. Their pedigrees connect this tree to the Mercian house of Godiva, the Earls of Chester and Lincoln, the Marcher Lords, the Mortimer claim to the throne, and the standard-bearers of Normandy at Hastings.</p>
+
+    <p>Reading a male-line genealogy is reading half the tree. The other half — the women who married in — typically brought as much in inheritance, in political weight, and in genealogical reach. Seven women on the medieval Beauchamp spine each brought a distinct inheritance worth marking.</p>
+
+    <div class="figures">
+      <div class="figure-card maternal full">
+        <div class="name">Adeliza Matilda Taillebois</div>
+        <div class="ep">m. Hugh de Beauchamp · the Mercian / Chester-Lincoln connection</div>
+        <div class="d">Daughter of Ivo de Taillebois (Hastings veteran, Lord of Kendal, sheriff of Lincolnshire) by Lucy of Bolingbroke. Lucy's later marriages (after Ivo's death) produced William de Roumare, <strong>1st Earl of Lincoln</strong>, and Ranulf de Gernon, <strong>2nd Earl of Chester</strong>. Through Lucy's mother, the line connects to Earl Leofric of Mercia and Lady Godiva, his celebrated wife.</div>
+      </div>
+      <div class="figure-card maternal full">
+        <div class="name">Emmeline d'Abetot</div>
+        <div class="ep">m. Walter de Beauchamp · the Worcestershire shrievalty + the Despenser stewardship</div>
+        <div class="d">Heiress of Urse d'Abetot (sheriff of Worcestershire 1069–1108, of Saint-Jean-d'Abbetot in the Pays de Caux). The d'Abetot inheritance brought the Beauchamps the hereditary shrievalty of Worcestershire. Urse's brother Robert Despenser was royal steward to William I; the later <strong>Hugh le Despenser</strong>, favourite of Edward II, claimed descent from this line.</div>
+      </div>
+      <div class="figure-card maternal full">
+        <div class="name">Maud de Braose</div>
+        <div class="ep">m. William de Beauchamp · the Marcher Lords of Bramber and Gower</div>
+        <div class="d">Of the Braose family, Norman-French Marcher Lords from Briouze in the Orne. The 1st Lord fought at Hastings; the family came to hold Bramber, Gower, Brecon, Abergavenny, Builth, and Radnor. A later, more famous Maud de Braose — Matilda de St. Valery, c. 1155–1210 — was starved to death by King John in Corfe Castle, an injustice that fed directly into the grievances of Magna Carta clause 39.</div>
+      </div>
+      <div class="figure-card maternal full">
+        <div class="name">Joan Mortimer</div>
+        <div class="ep">m. Walter II de Beauchamp · the Mortimer descent to Edward IV</div>
+        <div class="d">Daughter of Roger Mortimer of Wigmore, the great Marcher family. The Mortimers descended from Ralph de Mortemer (d. c. 1104), kinsman of the Conqueror. <strong>Roger Mortimer, 1st Earl of March</strong> (1287–1330) deposed Edward II as the lover of Queen Isabella, ruled England 1327–30, and was executed at Tyburn. His great-grandson Edmund Mortimer 3rd Earl married Philippa of Clarence, daughter and heiress of Lionel of Antwerp (Edward III's second surviving son), giving the Mortimers a senior claim to the throne. Through Anne Mortimer that claim reached Richard 3rd Duke of York; through Richard it became the Yorkist crown of Edward IV in 1461.</div>
+      </div>
+      <div class="figure-card maternal full">
+        <div class="name">Isabel Mauduit</div>
+        <div class="ep">m. William III de Beauchamp · the Earldom of Warwick</div>
+        <div class="d">Sister and coheiress of William Mauduit, 8th Earl of Warwick. Through her the earldom — created for Henry de Beaumont (de Newburgh) c. 1088 — passed to the Beauchamps. The Newburgh ancestors connect this line to one of the half-dozen most powerful Anglo-Norman families of the post-Conquest generation: the Beaumonts of Robert and Henry, the founder of Leicester and Warwick respectively.</div>
+      </div>
+      <div class="figure-card maternal full">
+        <div class="name">Maud Fitz-John</div>
+        <div class="ep">m. William 9th Earl of Warwick · the Justiciar's pedigree</div>
+        <div class="d">Coheiress of her brother Richard Fitz-John. Through her father John FitzGeoffrey (Justiciar of Ireland) she descended from <strong>Geoffrey FitzPiers, 1st Earl of Essex</strong> (c. 1162–1213), Chief Justiciar of England under Richard I and John, and one of the great administrators of the Angevin state. The line further connects to Geoffrey de Mandeville, the Anarchy turncoat earl whose career inspired generations of medieval moralists.</div>
+      </div>
+      <div class="figure-card maternal full">
+        <div class="name">Alice de Toni</div>
+        <div class="ep">m. Guy 10th Earl of Warwick · the Tosny standard-bearers</div>
+        <div class="d">Daughter of Ralph VII de Toni of Flamstead. Descendant of Roger I de Tosny (d. c. 1040), the famous warrior who fought the Moors in Catalonia, and of the Tosny who held the standard of Normandy at Hastings (an honour traditionally said to have been declined that day). The Tonis held Conches and Acquigny in Normandy and Flamstead in Hertfordshire and Clifford in the Welsh March.</div>
+      </div>
+    </div>
+
+    <p>Through these seven women the Beauchamps acquired links to the Earls of Chester and Lincoln, the Mercian house of Leofric and Godiva, the Despenser stewards, the Marcher Braoses and the Magna Carta crisis, the Yorkist royal line via the Mortimers, the Beaumont/Newburgh Earls of Warwick, the Justiciar Geoffrey FitzPiers and the Mandeville Earls of Essex, and the ancient Tosny standard-bearers of Normandy. The maternal lines explain how the Beauchamps rose from Bedfordshire tenants-in-chief to one of the great earldoms of late-medieval England — and how a single small Worcestershire knightly family became, over six generations, kin to nearly every senior baronage in the realm.</p>
+  </div>
+
+  <!-- ==================== X · COSGROVE / MAYFLOWER ==================== -->
+  <div class="section" id="sec10">
+    <div class="roman">X · COSGROVE & THE MAYFLOWER · 1592–1655</div>
+    <h2>The London merchant who lent £1,800 to the Pilgrims</h2>
+    <p class="lede">Northamptonshire yeomen, then a salter's apprentice, then one of the five English Partners of the Plymouth Colony.</p>
+
+    <p>The line emerges from the medieval obscurity with <strong>Thomas Beauchamp of Cosgrove</strong>, Northamptonshire (c. 1550 – c. 1619), recorded in the Heralds' Visitation of London (1633) as the head of the Beauchamp family of Cosgrove. The visitation chart, published by his merchant son John, shows the line with arms blazoned at the Walbroke Ward of London. Thomas married <strong>Dorothy Clarke</strong>, daughter of Edward Clarke of Rode, Northamptonshire. Their four children included Edward (eldest, of Cosgrove); Thomas; Margaret; and the youngest son, John — the merchant-investor.</p>
+
+    <h3>John Beauchamp, the Mayflower Investor (c. 1592–1655)</h3>
+    <p>John left Cosgrove as a young man for London, where he was apprenticed as a <strong>salter</strong> — a member of the Worshipful Company of Salters, originally dealing in salt but by the seventeenth century in fine textiles, especially imported silks. He soon broke from his trade and emerged as a general merchant. On 27 December 1615 he married <strong>Alice Freeman</strong> (b. 1601) at <strong>St Mary's Church, Pulborough</strong>, Sussex. Alice was the daughter of <em>Edmund Freeman the elder</em> (d. 1623) of Pulborough, a substantial yeoman, by his wife Alice Cole.</p>
+
+    <p>John Beauchamp's place in early American history rests on his role as one of the roughly seventy <strong>Merchant Adventurers</strong> who, organised largely by Thomas Weston in 1620, bankrolled the Pilgrims' voyage on the <em>Mayflower</em>. When the Adventurers fell into disarray in the mid-1620s and the original capital could not be repaid, John became one of the <strong>five "Undertakers"</strong> — the English Partners of the Purchasers — who in November 1626 (formalised in 1627–28) took on the Plymouth Colony's revised debt of <strong>£1,800</strong>. The deal: in exchange for the debt, the partners received a <strong>six-year monopoly on the colony's trade</strong>, especially the beaver fur trade out of the Kennebec, Penobscot, and Connecticut posts.</p>
+
+    <p>The five English partners were <strong>James Sherley</strong> (a London goldsmith, the lead figure and treasurer), <strong>John Beauchamp</strong>, <strong>Richard Andrews</strong>, <strong>Timothy Hatherly</strong>, and (briefly) <strong>John Pocock</strong> — paired on the colony side by William Bradford, Edward Winslow, Myles Standish, Isaac Allerton, William Brewster, John Alden, and Thomas Prence.</p>
+
+    <p>The arrangement deteriorated almost immediately. <strong>Isaac Allerton</strong>, acting as the colony's London agent, mingled private trade with the joint account; Sherley kept the books opaque; Beauchamp and Andrews suspected (with reason) they were being shorted on beaver shipments. <strong>Bradford's <em>Of Plymouth Plantation</em></strong> devotes long, anguished passages to the dispute — he complains that despite shipping thousands of pounds of beaver and otter pelts, the colony remained perpetually "in arrears." By 1641 Beauchamp had sued Bradford and his fellow Plymouth Undertakers in the English courts; a 1642 settlement, and a further accounting around 1645, finally extinguished most of the obligation. The colony paid out at considerable loss; the Undertakers paid out personal sums for the rest of their lives. John Beauchamp died in London in 1655.</p>
+
+    <p>His children were <strong>Alice</strong> (m. John Doggett of London, 1643), <strong>Thomas</strong>, <strong>Mary</strong> (m. Walter Wolsey — no known kinship to Cardinal Wolsey, despite the surname), <strong>Edmund</strong> (the Maryland immigrant), and <strong>George</strong>. John never sailed to America. His brother-in-law did.</p>
+
+    <h3>Edmund Freeman of Sandwich (1596–1682)</h3>
+    <p>Edmund Freeman the younger — Alice Beauchamp's brother — sailed from London on the <strong><em>Abigail</em></strong> on 4 June 1635, arriving in Boston Harbor on 8 October 1635 with his second wife Bennett (Hodsoll) Freeman and several children. He was already in his late thirties, a man of property; the passenger list described him as a "gentleman."</p>
+
+    <p>He briefly settled at Saugus (Lynn) before being chosen, in April 1637, as leader of the <strong>"Ten Men from Saugus"</strong> who had Plymouth Colony's permission to plant a new town on Cape Cod. That town became <strong>Sandwich</strong>, the oldest English settlement on the Cape and one of its most beautiful surviving Cape Cod colonial villages. He served as <strong>Assistant to the Governor of Plymouth Colony</strong> (1640–1646) and as a magistrate. He was unusually sympathetic to the Quakers when they began arriving in Sandwich in the 1650s, which cost him political standing.</p>
+
+    <p>He died in Sandwich in 1682 and was buried on his own farm beside Bennett under <strong>two large fieldstones he had himself positioned</strong>, said to represent the saddle (his) and the <strong>pillion</strong> (hers — the rear seat behind a saddle, on which a woman traditionally rode pillion behind the rider) of the horse on which the couple had ridden together over their fields. The site survives in East Sandwich; it is the oldest burying ground in town, known as the <strong>Saddle and Pillion Cemetery</strong>.</p>
+
+    <p>His descendants became one of the great proliferating families of southeastern New England. <strong>Major John Freeman</strong> (1627–1719), Edmund's son, was a militia officer in <strong>King Philip's War</strong> (1675–76) and married <strong>Mercy Prence</strong>, daughter of Governor Thomas Prence and granddaughter of Mayflower passenger Elder William Brewster — instantly knitting the Freemans into the Pilgrim aristocracy. From Major John descend the Freemans of Eastham, Harwich, Brewster, Chatham, and Orleans. By the nineteenth century the surname Freeman was so common on the lower Cape that "Cape Cod Freeman" was almost a regional identifier.</p>
+  </div>
+
+  <!-- ==================== XI · MARYLAND / EASTERN SHORE ==================== -->
+  <div class="section" id="sec11">
+    <div class="roman">XI · COLONIAL MARYLAND · 1666–1900</div>
+    <h2>Edmund Beauchamp the Immigrant and the Eastern Shore</h2>
+    <p class="lede">A 300-acre tract called <em>Contention</em>, the founding clerkship of Somerset County, and 200 years of intermarriage with the Turpins, Handys, Davises, and Haymans.</p>
+
+    <p>John Beauchamp's son <strong>Edmund</strong> (b. 16 December 1625, christened 17 Dec at Cosgrove) was apprenticed for eight years to his future brother-in-law <strong>John Doggett</strong> as a <strong>mercer</strong> — a dealer in fine textiles. He was made a Freeman of London on 9 May 1656. Sometime between 1656 and 1665 he came to Maryland.</p>
+
+    <p>In July 1666, on the recommendation of Governor <strong>Charles Calvert</strong>, Edmund was appointed Clerk of Court for the entire Eastern Shore. On 22 August 1666 <strong>Somerset County was established by proclamation</strong>, and Edmund became its first <strong>Clerk and Keeper of Records</strong> — a post he held until his death twenty-five years later. The folklorist <strong>Stith Thompson</strong>, the modern historian of the Beauchamp family (and himself a descendant), described his court books as "<em>a more splendidly kept set of records of court proceedings and deeds cannot, we believe, be found elsewhere during the early colonial period. He was a veritable master of his craft.</em>"</p>
+
+    <p>On 11 June 1668 Edmund married <strong>Sarah Dixon</strong> (b. 20 April 1652, Hungar's Parish, Northampton County, Virginia) at Annemessex, by Rev. Stephen Horsey, a "nonconformist" minister. Sarah was daughter of <strong>Ambrose Dixon</strong>, an early Quaker settler of "Dixon's Choice" near Manokin (c. 1620–1689), who had been prosecuted for Quaker sympathies in Virginia and removed northward when Lord Baltimore's relatively tolerant land policy opened Somerset to nonconformists.</p>
+
+    <p>On <strong>30 June 1668</strong>, eleven days after his marriage, Edmund purchased 300 acres at the head of the Great Annemessex River from Edward Dickeson — the tract called <strong><em>Contention</em></strong>. The following October he conveyed it to Sarah as her jointure. <em>Contention</em> would remain Beauchamp land for more than a century, the family seat through three generations.</p>
+
+    <p>In January 1689/90, "being very lame," Edmund petitioned the court for permission to move the records to his deputy's house. His will, dated 10 April 1691, was misplaced in the courthouse for centuries and only rediscovered in an unused alcove at Princess Anne by Mrs. <strong>Mary Turpin Layton</strong> of Washington, D.C., who published her findings in the D.A.R. Magazine in April 1932 — providing the textual foundation on which all subsequent genealogy of this family rests. His coat of arms: <em>sable, a chevron argent between three lions</em>.</p>
+
+    <h3>Edmund's nine children</h3>
+    <p>Edmund and Sarah's nine children, born between 1670 and c. 1687, seeded the lower Eastern Shore — Worcester, Somerset, and Sussex (Delaware) counties. The children:</p>
+
+    <div class="figures">
+      <div class="figure-card colonial">
+        <div class="name">Patience Beauchamp</div>
+        <div class="d">b. unknown · the least documented child</div>
+      </div>
+      <div class="figure-card colonial">
+        <div class="name">Thomas Beauchamp</div>
+        <div class="ep">eldest son · the Turpin connection</div>
+        <div class="d">b. 26 December 1670 · m. <strong>Mary Turpin</strong>, 9 October 1692 — beginning the Beauchamp-Turpin intermarriage that would run through Eastern Shore records for two centuries.</div>
+      </div>
+      <div class="figure-card colonial">
+        <div class="name">Alice Beauchamp</div>
+        <div class="d">b. 13 May 1674</div>
+      </div>
+      <div class="figure-card colonial">
+        <div class="name">Edmund Beauchamp Jr.</div>
+        <div class="d">b. 24 June 1676 · carried the name forward into Worcester County after its 1742 erection</div>
+      </div>
+      <div class="figure-card colonial">
+        <div class="name">John Beauchamp</div>
+        <div class="d">b. 1 April 1679 · ancestor of a Sussex County Delaware branch</div>
+      </div>
+      <div class="figure-card colonial">
+        <div class="name">Doggett Beauchamp</div>
+        <div class="d">b. 15 July 1681 · the unusual given name preserves a maternal-line connection</div>
+      </div>
+      <div class="figure-card colonial">
+        <div class="name">Edward Beauchamp</div>
+        <div class="ep">your direct ancestor</div>
+        <div class="d">b. c. 1683 · m. Naomi Fountain · received his portion of <em>Contention</em> on coming of age</div>
+      </div>
+      <div class="figure-card colonial">
+        <div class="name">Robert Beauchamp</div>
+        <div class="d">b. c. 1685</div>
+      </div>
+      <div class="figure-card colonial">
+        <div class="name">William Beauchamp</div>
+        <div class="d">b. c. 1687 · ancestor of a Sussex County Delaware branch with descendants intermarrying the Polks and Wilsons</div>
+      </div>
+    </div>
+
+    <p>After Edmund's death Sarah Dixon Beauchamp later married John Heath of Somerset County. The Beauchamp-Turpin intermarriage that began with Thomas's 1692 marriage to Mary Turpin runs through Eastern Shore records for the next two centuries; the Beauchamp-Davis-Handy-Hayman cousinage that runs through the 19th-century records begins in this generation as well.</p>
+
+    <h3>Edward Beauchamp (c. 1683 – 1750) and the Naomi Fountain correction</h3>
+    <p>Edward, your direct ancestor, was about eight or nine when his father died. He received his portion of <em>Contention</em> on coming of age and remained a prosperous planter until his death on 2 October 1750 at Coventry Parish, Somerset Co.; he is buried at Coventry Episcopal Church Cemetery, Rehobeth.</p>
+
+    <p>Edward married <strong>Naomi Fountain (Fountaine)</strong>, daughter of Samuel Marcy Fountain and Mary Bozman. The Fountain (or Fontaine) family was of <strong>Huguenot origin</strong>; Mary Bozman tied the line to the politically prominent Bozmans of Talbot and Somerset.</p>
+
+    <div class="pull">
+      <strong>Correction to the original</strong>
+      The Lorraine Shoemaker compilation gave Edward's wife as "Sarah Dixon" — that was actually Edward's <em>mother's</em> name. Edward married Naomi Fountain; their son Fountain Beauchamp (b. 1727) was named for her family. The Revolutionary War patriot "Fontaine Beauchamp of the 2nd Maryland Regiment," cited in the original document, was Edward and Naomi's grandson.
+    </div>
+
+    <p>Edward's will mentions multiple enslaved persons who, after his widow's death, were to be "equally divided" among his five sons. Children: Marcy, Thomas (b. 1716), John, William, and Fountain (b. 1727).</p>
+
+    <h3>Down through the Republic</h3>
+    <p>The line continues through three further Eastern Shore generations:</p>
+
+    <p><strong>Thomas Beauchamp</strong> (1716–1759) married <strong>Elizabeth "Betty" Handy</strong>, daughter of Samuel Handy. The Handys descended from Samuel Handy the Immigrant (c. 1645–1721), patentee of "Pemberton's Good Will," and were among the wealthiest planters on the lower Eastern Shore by the early 18th century. <strong>Colonel Levin Handy</strong> (1754–1799) — a kinsman through this Handy line — was a Revolutionary War officer who served under Washington and was at the Battle of Long Island; he is buried at Pemberton Hall outside Salisbury.</p>
+
+    <p><strong>Levin Beauchamp Sr.</strong> (b. 1747) married <strong>Tabitha Davis</strong> — the first appearance of a Davis surname that would intertwine with the family again four generations later. Children: Thomas, Nathan Handy, Prissilla, Samuel, Levin, Joseph.</p>
+
+    <p><strong>Levin Beauchamp</strong> (b. 1772) is the quietest generation — listed on the 1800 census of Somerset County and otherwise leaving few records.</p>
+
+    <p><strong>Levin Henry Beauchamp</strong> (1812–1887), a farmer at Brinkleys, Somerset County, enlisted on 17 September 1864, served as a private with the 1st Regiment Maryland Cavalry (Potomac Home Brigade, Co. H) and the 1st Regiment Maryland Infantry (Co. C), and was mustered out 25 May 1865. The Eastern Shore was politically split during the Civil War; Levin Henry was on the Union side. <strong>In 1874 he was appointed Postmaster of Westover, Maryland.</strong> He is buried at St. Stephen's Cemetery, Somerset, MD. Children: Levin W., Oliver T., Helen A., Francis Tubman.</p>
+
+    <p><strong>Francis Tubman Beauchamp</strong> (26 November 1869 – 26 September 1896) married <strong>May S. Davis</strong> on Christmas Eve 1890 at Rehoboth Beach, Maryland. Both died young. May was daughter of James Davis and Elizabeth Handy; her sister <strong>Ida Davis</strong> married Francis Tubman's elder brother <strong>Oliver T. Beauchamp</strong> — two Beauchamp brothers married two Davis sisters. A third Davis sister, <strong>Hannah</strong>, married <strong>Warren Hayman</strong>, and it was the Haymans who took in young Francis Elmo and his sister Margaret after their orphaning.</p>
+
+    <h3>Notable Eastern Shore cousins</h3>
+    <p>The Maryland Beauchamps did not produce a governor or a signer, but several cousins attained regional or national notice:</p>
+
+    <p><strong>Fountain (Fontaine) Beauchamp</strong> (c. 1727 – 1782) — Edward and Naomi's son. Served the Continental cause as a recognised D.A.R. patriot during the Revolutionary War; associated with the 2nd Maryland Regiment of 1776, which fought through the New York Campaign, Trenton, Princeton, Brandywine, Germantown, Monmouth, Camden, and Guilford Court House.</p>
+
+    <p><strong>Rev. William Beauchamp</strong> (1772/3 – 1824) — a Methodist minister of considerable note in the early Methodist Episcopal Church, active on the Eastern Shore (the Delmarva Peninsula was known as the "Garden of Methodism" for its early-19th-century camp meetings) and in Ohio. He published sermons and is treated in early Methodist histories.</p>
+
+    <div class="callout">
+      <div class="label">★ THE KENTUCKY TRAGEDY · 1825</div>
+      <h4>Jereboam Orville Beauchamp (1802–1826)</h4>
+      <p>A young Kentucky lawyer descended from the Maryland Beauchamps via Virginia. On the early morning of 7 November 1825, Beauchamp murdered the Kentucky legislator <strong>Solomon P. Sharp</strong> at Sharp's home in Frankfort. His wife <strong>Anna Cooke</strong> had agreed to marry him on condition that he kill Sharp, who had allegedly fathered her stillborn child and denied paternity. The couple were captured and convicted; on the morning of his execution they attempted a double suicide in his cell with a smuggled knife. Anna died from the attempt; Jereboam survived long enough to be rushed to the gallows and hanged on 7 July 1826.</p>
+      <p>The case — known as the <em>Beauchamp–Sharp Tragedy</em> or simply the <em>Kentucky Tragedy</em> — became one of the most sensational murders of antebellum America. It inspired Edgar Allan Poe's unfinished play <em>Politian</em>, William Gilmore Simms's novel <em>Beauchampe</em>, and Robert Penn Warren's <em>World Enough and Time</em> (1950). The case is also the subject of the modern Kentucky Historical Society marker at Frankfort.</p>
+    </div>
+  </div>
+
+  <!-- ==================== XII · MODERN LINES ==================== -->
+  <div class="section" id="sec12">
+    <div class="roman">XII · INTO THE MODERN ERA · 1893 – present</div>
+    <h2>Calhoun, Ansman, Gaddis, Hicks, Carlson</h2>
+    <p class="lede">Five 19th- and 20th-century surnames converge on the household — a Bedford PA Catholic, an Altoona PA German bookkeeper, a Western PA Scots-Irish Gaddis, a Denver-via-Illinois Hicks, and a Vermont Swedish-American affineur.</p>
+
+    <p>The transition from Eastern Shore Maryland to twentieth-century Pennsylvania happened in a single life. <strong>Francis Elmo Beauchamp</strong> (b. 23 March 1893, Westover, Maryland) was orphaned by age six (his father at 26, his mother at 28, both dead within three years of each other) and raised in the Hayman household on the Eastern Shore. He grew up to work as a fireman on the <strong>Pennsylvania Railroad — Middle Division</strong> and lived the rest of his career in <strong>Altoona, Pennsylvania</strong> — the railroad shop town founded in 1849 that drew thousands of skilled workers across central Pennsylvania.</p>
+
+    <p>On 15 September 1913 at 6:30 a.m. at <strong>St. Thomas' Catholic Church, Bedford, Pennsylvania</strong>, Francis Elmo married <strong>Regina Catherine Calhoun</strong>, daughter of George A. Calhoun of North Richard Street, Bedford. The wedding was attended by Harry Spicer of Lancaster (cousin of the bride) and Miss Agnes Leasure of Bedford. The newlyweds left on the 8:57 train for a honeymoon trip to Philadelphia, New York, and Baltimore, after which they settled at Westover, Maryland — where the groom held a position with the railroad company.</p>
+
+    <p>Francis Elmo registered for both World War I and World War II. The WWI registration card describes him as 5'9", 220 lbs, gray eyes, red hair, with scars on his left leg from a dog bite. He died in 1973. Their seven children were Catherine, <strong>Frances Mae</strong>, Robert, Evelyn, John, Margaret, and William.</p>
+
+    <h3>The five surnames</h3>
+
+    <h4>CALHOUN — Bedford, Pennsylvania</h4>
+    <p>The surname is an anglicization of the Scottish Gaelic <em>Colquhoun</em>, the name of a Highland clan seated at <strong>Luss on the western shore of Loch Lomond</strong>, Dunbartonshire — tracing itself to Humphrey of Kilpatrick, who received the lands of Colquhoun from Maldouen, Earl of Lennox, in the 13th century. In Ireland the name appears most heavily in Ulster, where Colquhoun branches settled during the 17th-century Plantation, and where the spelling drifted toward Calhoun, Cahoun, and Calhoon. The bulk of American Calhouns are <strong>Scots-Irish Presbyterian</strong> in origin, arriving in the 18th century and pushing through the Cumberland Valley into the southern Appalachian backcountry; the most famous bearer, John C. Calhoun (1782–1850), the South Carolina statesman, exemplifies that path.</p>
+
+    <p>A <em>Catholic</em> Calhoun line is therefore unusual but not anomalous. By the late nineteenth century, intermarriage and conversion in mixed Catholic-Protestant Pennsylvania communities produced Catholic households with Scots-Irish surnames. <strong>Bedford County</strong>, Pennsylvania had exactly the conditions for this: <strong>St Thomas the Apostle parish</strong> in Bedford was founded in 1828 to serve the Catholic minority that grew up around the Forbes Road, the iron furnaces, and later the railroad and the mineral-spring resort trade at Bedford Springs. Irish Catholic laborers were drawn there from the 1830s onward; a Calhoun marrying into that community by 1913 fits the pattern.</p>
+
+    <h4>ANSMAN — Altoona, Pennsylvania</h4>
+    <p>A German surname, almost certainly an American simplification of <em>Anschmann</em> or <em>Ansmann</em>. The name is built on the Old High German element <em>Ans-</em> (cognate with Old Norse <em>Áss</em>, "god," as in the names Ansgar and Anselm) plus the occupational <em>-mann</em>. Names of this shape cluster historically in the <strong>Rhine-Palatinate, Hesse, and Württemberg</strong> — the same region that fed the great 18th-century Pennsylvania Dutch migration and the second German wave of the 1840s–1880s. <strong>Altoona</strong>, founded in 1849 as a Pennsylvania Railroad shop town, drew heavily on German Catholic and Lutheran tradesmen — boilermakers, machinists, carpenters — and the city's German-language parishes (St. Mary's, founded 1851) document hundreds of families with names of this pattern. <strong>William E. Ansman</strong> (1916–2003), a bookkeeper, married <strong>Frances Mae Beauchamp</strong> in the 1930s; they were on 22nd Avenue Altoona by 1940. Their four daughters were Nancy Jean, Marjorie Joyce, Frances Lorraine, and <strong>Carole</strong>. The family later moved west across Pennsylvania to <strong>Butler</strong>, north of Pittsburgh, where the next generation took root before scattering.</p>
+
+    <h4>GADDIS — Western Pennsylvania, then Vermont</h4>
+    <p>Most often cited as a variant of <strong>Geddes</strong>, a Lowland Scots / Border surname taken from the lands of Geddes in Nairnshire (with later branches in Berwickshire and Northumberland). The Welsh derivation sometimes claimed — from <em>Cadwgan</em> or similar — is real but rarer; the dominant American line is Scots-Border. Gaddis families appear in <strong>southwestern Pennsylvania</strong> (Fayette, Greene, Washington counties) by the 1780s, part of the Scots-Irish wave that crossed from Lancaster County over the Alleghenies. <strong>Thomas Gaddis</strong> built <strong>Fort Gaddis</strong> in Fayette County around 1774, one of the documented Revolutionary-era frontier stations, and that family seeded Gaddises across western Pennsylvania for the next two centuries. A Butler County Gaddis line in the 20th century is most likely a descendant or collateral of that Fayette stock.</p>
+
+    <p><strong>Harry Lloyd Gaddis Jr.</strong> (d. 1996, Butler PA) and <strong>Thelma Grace Hicks</strong> (1913–2001) were married 62 years and raised their family in Butler, Pennsylvania. Their son <strong>Geoffrey ("Geoff") B. Gaddis</strong> married <strong>Carole Ansman</strong> and the couple moved to Putney, Vermont, in the early 1980s — becoming deeply embedded in local civic life (Putney Pool Board, Putney Community Center, town office) and supporting Vermont Humanities and the Yellow Barn international chamber music center.</p>
+
+    <p>Geoff's siblings: <strong>Linda Gaddis Ferrari</strong> (m. Dr. Bernard T. Ferrari — surgeon, former McKinsey & Company partner, Dean of the Johns Hopkins Carey Business School; together they established the $1 million Ferrari Humanities Symposia at the University of Rochester) and <strong>Gail Gaddis Magargee</strong> of Philadelphia.</p>
+
+    <h4>HICKS — Illinois → Denver → Butler PA</h4>
+    <p>A thoroughly English surname, a patronymic from <em>Hick</em>, a medieval pet form of <strong>Richard</strong> (compare Dick, Hitch, Higgins, Hitchcock). It is among the top 100 surnames in England and is concentrated historically in the West Country (Devon, Somerset, Cornwall) and the East Midlands. Hicks families came to America in all the major colonial waves: Massachusetts and Long Island in the 1630s (the Quaker Hickses of Hicksville, NY descend here, including <strong>Elias Hicks</strong> the abolitionist preacher); Virginia in the 1640s; the Carolinas and inland through the 18th century.</p>
+
+    <p>A Hicks line born in <strong>Illinois</strong> around 1913, raised in <strong>Denver</strong>, then married into <strong>Pennsylvania</strong>, fits the standard mobile Anglo-American Midwestern pattern of the early 20th century. Illinois-to-Colorado migration was extremely common between 1890 and 1920, driven by Denver's growth as a railroad and smelting hub and by the so-called "lungers" who moved to Colorado for the dry air to treat tuberculosis. Many Illinois farm families had a Denver chapter before scattering eastward again.</p>
+
+    <h4>CARLSON — Vermont</h4>
+    <p>A Swedish patronymic, <em>Karlsson</em> ("son of Karl"), among the ten most common surnames in Sweden. The great Swedish migration to the United States ran from roughly 1865 to 1915, peaking in the 1880s, and concentrated in <strong>Minnesota, Illinois, Wisconsin, and the Pacific Northwest</strong>, with smaller settlements in New England — including Swedish quarrymen and farmers who worked in <strong>Barre, Vermont</strong> in the late 1800s.</p>
+
+    <p><strong>Beth Carlson</strong> is a highly skilled <em>affineur</em> — the master cheesemaker who manages a cave's microclimate, develops the rinds, and judges the moment of peak ripeness. Working out of The Major's Farm in Putney, home of <strong>Vermont Shepherd</strong> (with one of the first and most renowned man-made cheese caves in the United States), her expertise played a critical role in the Vermont artisan-cheese renaissance. By urging neighboring farmers to age their unwaxed farmhouse cheeses under her care — including those of <em>Orb Weaver Farm</em> — she directly elevated the quality and reputation of producers across the state.</p>
+
+    <h3>Generation 30 · Generation 31</h3>
+    <p><strong>Jason Gaddis</strong> (b. Pennsylvania) — Jason and Beth's son, who took an M.Arch. from the Yale School of Architecture in 1999 and runs J Gaddis Design, a practice serving the Upper Valley region of Vermont and New Hampshire with focus on historic preservation, highly customized residential builds, and universal design. He and Beth have advocated for public education and co-authored pieces in <em>The Commons</em> on educational equity.</p>
+
+    <p><strong>Kip Gaddis</strong> (Rochester, New York) is studying mechanical engineering at Rochester Institute of Technology, with graduation expected in 2027. He is an undergraduate researcher at the <strong>RIT Nano Power Research Laboratories</strong>, working on a NASA-funded effort to build <em>radioisotope thermoradiative cells</em> for deep-space power generation in collaboration with NASA Glenn. Earlier in 2025 he was a process-engineering intern at the RIT Semiconductor & Nanofabrication Laboratory. He has been part of <strong>RIT Formula SAE Racing</strong> for three years — as Electronics Design & Test Engineer, and earlier as Aerodynamics Design Engineer. <strong>UPWARDS for the Future Fellow</strong> (RIT–Tokyo Electron).</p>
+  </div>
+
+  <div class="callout">
+    <div class="label">★ THIRTY-ONE GENERATIONS · NINE HUNDRED AND FIFTY YEARS</div>
+    <h4>From a Domesday baron to an engineering student in upstate New York</h4>
+    <p>One unbroken male-line descent. Six surnames (Beauchamp · Ansman · Gaddis), counting only the present family — and through the women, dozens more. Three crossings of the Atlantic in the line: William the Conqueror's c. 1066, Edmund Beauchamp's c. 1660, and (through the Carlson line) the Swedish migration of the late 19th century. Two American wars in service (Fontaine in the Revolution, Levin Henry in the Civil War). One regicidal kinsman (Guy of Warwick), one regent of France (Richard 13th Earl), one ancestress of every English monarch since Henry VIII (Margaret of Bletso), one model for Sebastian Flyte (Hugh Lygon). One tract called <em>Contention</em> on the Great Annemessex River. One pair of fieldstones at East Sandwich. One baby on the eight-fifty-seven train out of Bedford.</p>
+  </div>
+
+  <footer>
+    Originally compiled by Lorraine Shoemaker for Frances Lorraine Ansman<br>
+    expanded with primary-source research and contemporary genealogical scholarship
+    <div class="sources">
+      <strong>Principal sources</strong>
+      Stith Thompson, "The Beauchamp Family," <em>The Filson Club History Quarterly</em> 28.2 (1954)<br>
+      Clayton Torrence, <em>Old Somerset on the Eastern Shore of Maryland</em> (1935)<br>
+      Mary Turpin Layton, "Edmund Beauchamp of Maryland," <em>D.A.R. Magazine</em> (April 1932)<br>
+      Sir William Dugdale, <em>The Baronage of England</em> (1675)<br>
+      G. E. Cokayne, <em>The Complete Peerage</em>, esp. vols. II (Beauchamp of Bedford) and XII pt 2 (Warwick)<br>
+      William Bradford, <em>Of Plymouth Plantation</em> (Morison ed., 1952)<br>
+      Robert Charles Anderson, <em>The Great Migration Begins</em> (NEHGS) — entry for Edmund Freeman<br>
+      Frederick Freeman, <em>The History of Cape Cod</em> (1858–62)<br>
+      The Visitation of London 1633–35 (Harleian Society vols. 15 & 17)<br>
+      Wikipedia, WikiTree, FindAGrave, FamilySearch — primary-source citations on the modern lines<br>
+      Lorraine Shoemaker, <em>Beauchamp Family Line</em> (compiled for Frances Lorraine Ansman)
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

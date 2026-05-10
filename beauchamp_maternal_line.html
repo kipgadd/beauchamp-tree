@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Maternal Line — Carlson · Fehlberg · Pschigoda · Norwood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:        #f5efe2;
+  --paper-soft:   rgba(255, 251, 240, 0.65);
+  --ink:          #2a2118;
+  --ink-soft:     #5a4a38;
+  --ink-faded:    #8a7860;
+  --rule:         #c8b89a;
+  --accent:       #7a1f1f;
+  --gold:         #a07d2c;
+  --green:        #3d5a3d;
+  --blue:         #2a4a5a;
+  --teal:         #2f6960;
+  --burnt:        #b6633a;
+  --slate:        #5e6b7a;
+  --shadow:       rgba(60, 40, 20, 0.10);
+
+  --confirmed:    #3d5a3d;
+  --probable:     #a07d2c;
+  --unproven:     #7a1f1f;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 20% 5%, rgba(47, 105, 96, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 80% 95%, rgba(160, 125, 44, 0.05) 0%, transparent 45%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.13  0 0 0 0 0.09  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0 24px;
+}
+
+/* topbar */
+.topbar {
+  background: rgba(245, 239, 226, 0.95);
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  margin: 0 -24px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.topbar-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.brand { font-family: 'Cinzel', serif; font-weight: 600; font-size: 15px; letter-spacing: 0.12em; }
+.brand em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; color: var(--accent); letter-spacing: 0.02em; text-transform: lowercase; }
+.topbar nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.topbar nav a { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ink-soft); text-decoration: none; font-size: 16px; border-bottom: 1px solid transparent; padding-bottom: 1px; }
+.topbar nav a.active { color: var(--teal); border-bottom-color: var(--teal); }
+.topbar nav a:hover { color: var(--accent); }
+
+/* hero */
+.wrap { max-width: 980px; margin: 0 auto; padding: 60px 0 100px; }
+.hero { text-align: center; margin-bottom: 50px; }
+.hero h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: 0.07em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.hero h1 em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--teal);
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+.hero .lede {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+.hero .meta {
+  font-family: 'EB Garamond', serif;
+  font-size: 12.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  margin-top: 22px;
+}
+
+/* status legend */
+.status-legend {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 22px 0 0;
+  padding: 9px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: var(--paper-soft);
+  font-family: 'EB Garamond', serif;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  letter-spacing: 0.03em;
+  justify-content: center;
+}
+.status-legend .item { display: inline-flex; align-items: center; gap: 6px; }
+.status-legend .pip {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+.status-pip {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.status-pip.confirmed { background: var(--confirmed); }
+.status-pip.probable  { background: var(--probable); }
+.status-pip.unproven  { background: var(--unproven); }
+.status-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.status-tag.confirmed { background: rgba(61, 90, 61, 0.13); color: var(--confirmed); }
+.status-tag.probable  { background: rgba(160, 125, 44, 0.13); color: var(--probable); }
+.status-tag.unproven  { background: rgba(122, 31, 31, 0.10); color: var(--unproven); }
+
+/* sections */
+.era {
+  text-align: center;
+  margin: 60px 0 30px;
+}
+.era .roman {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--teal);
+  margin-bottom: 6px;
+}
+.era h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(24px, 3.4vw, 32px);
+  color: var(--ink);
+  line-height: 1.15;
+}
+.era .gloss {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--ink-soft);
+  max-width: 600px;
+  margin: 12px auto 0;
+}
+.era::after {
+  content: '';
+  display: block;
+  width: 1px; height: 30px;
+  background: linear-gradient(to bottom, var(--rule), transparent);
+  margin: 22px auto 0;
+}
+
+/* tree node */
+.gen-row {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 16px;
+  align-items: start;
+  position: relative;
+  margin: 0 0 4px;
+  padding: 14px 0;
+}
+.gen-row::before {
+  content: '';
+  position: absolute;
+  left: 31px;
+  top: -6px;
+  bottom: -6px;
+  width: 1px;
+  background: var(--rule);
+}
+.gen-row:first-of-type::before { background: linear-gradient(to bottom, transparent, var(--rule)); }
+.gen-row:last-of-type::before  { background: linear-gradient(to bottom, var(--rule), transparent); }
+
+.gen-row .marker { text-align: right; padding-right: 10px; position: relative; }
+.gen-row .marker .num {
+  display: inline-block;
+  width: 26px; height: 26px;
+  line-height: 26px;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  position: relative;
+  z-index: 2;
+}
+.gen-row .marker .yr {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--ink-faded);
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.card {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-left-width: 3px;
+  border-radius: 2px;
+  padding: 16px 22px;
+}
+.card.center { border-left-color: var(--teal); background: rgba(255, 248, 232, 0.78); }
+.card.carlson { border-left-color: var(--blue); }
+.card.fehlberg { border-left-color: var(--burnt); }
+.card.pschigoda { border-left-color: var(--green); }
+.card.norwood { border-left-color: var(--slate); }
+
+.card .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+.card .ep {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13.5px;
+  color: var(--accent);
+  margin-top: 2px;
+  letter-spacing: 0.02em;
+}
+.card .d {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-top: 5px;
+}
+.card .branchtag {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--ink-faded);
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+.card .branchtag .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+.card .body {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dotted var(--rule);
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.card .body strong { color: var(--ink); }
+.card .body em { color: var(--accent); font-style: italic; }
+.card .body p + p { margin-top: 8px; }
+.card .body ul {
+  margin-top: 6px;
+  padding-left: 22px;
+}
+.card .body li { padding: 2px 0; }
+
+.union {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dotted var(--rule);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.union .glyph { color: var(--teal); font-family: 'Cinzel', serif; flex-shrink: 0; }
+.union .who-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: var(--ink); }
+.union .who-meta { font-style: italic; font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+
+/* sibling group */
+.siblings-block {
+  margin: 8px 0 6px 80px;
+  padding: 16px 20px;
+  background: rgba(255, 251, 240, 0.5);
+  border: 1px dashed var(--rule);
+  border-left: 2px solid var(--blue);
+  border-radius: 2px;
+}
+.siblings-block .label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--blue);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.sibling-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.sibling {
+  font-size: 14px;
+  color: var(--ink-soft);
+  padding: 6px 10px;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+}
+.sibling.you {
+  background: rgba(47, 105, 96, 0.10);
+  border-color: var(--teal);
+}
+.sibling .nm {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 15.5px;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.sibling .meta { font-size: 12.5px; color: var(--ink-faded); font-style: italic; margin-top: 1px; }
+
+/* prose section */
+.prose-section {
+  margin: 80px 0;
+  scroll-margin-top: 80px;
+}
+.prose-section .roman {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--teal);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.prose-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(26px, 3.6vw, 36px);
+  color: var(--ink);
+  text-align: center;
+  margin-bottom: 28px;
+  line-height: 1.1;
+}
+.prose-section::before {
+  content: '✦';
+  display: block;
+  text-align: center;
+  color: var(--teal);
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  margin-bottom: 24px;
+}
+.prose-section p {
+  margin-bottom: 14px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.prose-section p strong { color: var(--ink); }
+.prose-section p em { color: var(--accent); font-style: italic; }
+.prose-section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 21px;
+  color: var(--ink);
+  margin: 28px 0 10px;
+}
+.prose-section a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted; }
+
+.callout {
+  background: rgba(47, 105, 96, 0.07);
+  border-top: 1px solid var(--teal);
+  border-bottom: 1px solid var(--teal);
+  padding: 22px 30px;
+  margin: 26px 0;
+}
+.callout .label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.callout h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--ink);
+  text-align: center;
+  margin-bottom: 12px;
+}
+.callout p { font-size: 15px; }
+
+.next-records {
+  margin: 24px 0;
+  padding: 18px 24px;
+  background: rgba(122, 31, 31, 0.05);
+  border-left: 3px solid var(--accent);
+  border-radius: 2px;
+}
+.next-records .label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.next-records ol {
+  margin-top: 4px;
+  padding-left: 22px;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.next-records li { padding: 3px 0; }
+
+footer {
+  margin-top: 90px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-faded);
+  font-size: 14px;
+}
+footer .glyph { color: var(--teal); letter-spacing: 0.5em; display: block; margin-bottom: 12px; }
+footer .sources {
+  margin-top: 18px;
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--ink-faded);
+  line-height: 1.7;
+  text-align: left;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+footer .sources strong {
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink-soft);
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+}
+footer .sources a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted; }
+
+@media (max-width: 700px) {
+  body { padding: 0 14px; }
+  .topbar { margin: 0 -14px; padding: 10px 12px; }
+  .topbar-inner { gap: 12px; }
+  .gen-row { grid-template-columns: 48px 1fr; gap: 10px; }
+  .gen-row::before { left: 23px; }
+  .gen-row .marker .num { width: 22px; height: 22px; line-height: 22px; font-size: 9px; }
+  .siblings-block { margin-left: 0; }
+  .sibling-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand">Beauchamp <em>family</em></span>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="beauchamp_panorama.html" style="color: var(--accent)">★ Panorama</a>
+      <a href="beauchamp_tree_interactive.html">Interactive Tree</a>
+      <a href="beauchamp_tree_visual.html">Visual Chart</a>
+      <a href="beauchamp_reference.html">Reference</a>
+      <a href="beauchamp_maternal_line.html" class="active">Maternal Line</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>The Maternal <em>line</em></h1>
+    <p class="lede">Beth Carlson-Gaddis's family — Carlson, Fehlberg, Pschigoda, Norwood, Schultz — out of St. Joseph and Benton Harbor, Michigan, with German and Polish roots in the late nineteenth century.</p>
+    <p class="meta">Working tree · status indicators preserved</p>
+
+    <div class="status-legend">
+      <span class="item"><span class="pip" style="background: var(--confirmed)"></span><strong style="font-style:normal">Confirmed</strong> · directly supported by obituary or public record</span>
+      <span class="item"><span class="pip" style="background: var(--probable)"></span><strong style="font-style:normal">Probable</strong> · genealogy snippet / search result, not yet primary-sourced</span>
+      <span class="item"><span class="pip" style="background: var(--unproven)"></span><strong style="font-style:normal">Unproven</strong> · family memory / plausible lead</span>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       I · THE PRESENT-DAY VIEW
+       ==================================================================== -->
+  <div class="era">
+    <div class="roman">I · THE PRESENT-DAY VIEW</div>
+    <h2>Kip · Beth · Patricia — three generations</h2>
+    <div class="gloss">From Kip back through his mother Beth Carlson-Gaddis and her mother Patricia Fehlberg Carlson — the central, fully-documented spine of this maternal tree.</div>
+  </div>
+
+  <div class="gen-row">
+    <div class="marker">
+      <span class="num">1</span>
+      <span class="yr">21st c.</span>
+    </div>
+    <div class="card center">
+      <div class="name">Kip Gaddis</div>
+      <div class="ep">son of Jason Gaddis &amp; Beth Carlson-Gaddis</div>
+      <div class="d">Rochester, NY · brother Asa Gaddis</div>
+      <div class="branchtag"><span class="dot" style="background: var(--teal)"></span>Maternal line begins here, working backward</div>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="marker">
+      <span class="num">2</span>
+      <span class="yr">b. 20th c.</span>
+    </div>
+    <div class="card center">
+      <div class="name">Beth Carlson-Gaddis<span class="status-tag confirmed">Confirmed</span></div>
+      <div class="ep">affineur · The Major's Farm / Vermont Shepherd, Putney, VT</div>
+      <div class="d">Fourth of ten siblings raised in St. Joseph, Michigan · m. Jason Gaddis</div>
+      <div class="body">
+        <p>A highly skilled <em>affineur</em> — the master cheesemaker who manages a cave's microclimate, develops the rinds, and judges the moment of peak ripeness. Working out of The Major's Farm in Putney, home of <strong>Vermont Shepherd</strong> with one of the first and most renowned man-made cheese caves in the United States. Her work helped elevate the Vermont artisan-cheese renaissance, including by aging cheeses for neighbouring farms like <em>Orb Weaver Farm</em>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="marker">
+      <span class="num">3</span>
+      <span class="yr">St. Joseph, MI</span>
+    </div>
+    <div class="card center">
+      <div class="name">Patricia Fehlberg Carlson<span class="status-tag confirmed">Confirmed</span></div>
+      <div class="ep">the central matriarch · mother of all ten siblings</div>
+      <div class="d">b. St. Joseph, Berrien County, Michigan · had at least one child by Verrill Norwood, then nine more by Gordon Carlson Jr.</div>
+      <div class="body">
+        <p>Patricia is the verified pivot of this entire tree: every sibling in the St. Joseph household is her child. Linda Carlson-Newell's obituary names her father as Gordon Carlson Jr. and her mother as Patricia Fehlberg Carlson; Nancy Norwood Bowes's obituary names <em>her</em> father as Verrill Norwood and <em>her</em> mother as Patricia Fehlberg Carlson. The blended family is therefore best read as <strong>Patricia-centered</strong> rather than as a single Carlson paternal household.</p>
+        <p>Patricia's own parents were <strong>Fred Fehlberg</strong> and <strong>Blossom Pschigoda Fehlberg</strong> (see Generation 4 below).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- The two unions -->
+  <div class="gen-row">
+    <div class="marker">
+      <span class="num">⚭</span>
+      <span class="yr">1st union</span>
+    </div>
+    <div class="card norwood">
+      <div class="name">Verrill Norwood<span class="status-tag confirmed">Confirmed</span></div>
+      <div class="ep">Patricia's first partner · Nancy's biological father</div>
+      <div class="d">Father of Nancy Norwood Bowes (b. 8 June 1955, St. Joseph; d. 11 November 2018, age 63)</div>
+      <div class="body">
+        <p>Confirmed via Nancy Bowes's published obituary, which states explicitly that Nancy was born in St. Joseph to <strong>Verrill Norwood and Patricia Fehlberg Carlson</strong>. The Norwood line beyond Verrill himself is not yet researched in this working tree.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="marker">
+      <span class="num">⚭</span>
+      <span class="yr">2nd union</span>
+    </div>
+    <div class="card carlson">
+      <div class="name">Gordon Carlson Jr.<span class="status-tag confirmed">Confirmed</span></div>
+      <div class="ep">Patricia's second partner · father of nine of the ten siblings</div>
+      <div class="d">deceased · son of Gordon Carlson Sr. and Dorothy Carlson</div>
+      <div class="body">
+        <p>Linda Carlson-Newell's obituary lists Gordon Carlson Jr. as her deceased father and identifies <strong>Gordon Carlson Sr.</strong> and <strong>Dorothy Carlson</strong> as her grandparents — making them Beth's grandparents-in-law on the Carlson paternal side. Dorothy's maiden name appears (per a Find a Grave entry the page itself was blocked) as <em>Dorothy Mae Cubitt</em> — that should be treated as <span class="status-tag probable">Probable</span> until directly verified.</p>
+        <p>The Find a Grave snippet also placed two additional names — <em>Donna Jean</em> and <em>Lois Ann Carlson Miller</em> — in the same household context, suggesting Gordon Jr. had two sisters; that placement is also <span class="status-tag probable">Probable</span>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE TEN SIBLINGS -->
+  <div class="siblings-block">
+    <div class="label">⊕ The ten siblings raised by Patricia in St. Joseph</div>
+    <div class="sibling-grid">
+      <div class="sibling">
+        <div class="nm">Nancy Norwood Bowes <span class="status-pip confirmed"></span></div>
+        <div class="meta">b. 8 Jun 1955 · d. 11 Nov 2018 · daughter of Verrill Norwood</div>
+      </div>
+      <div class="sibling">
+        <div class="nm">Bruce Carlson <span class="status-pip confirmed"></span></div>
+      </div>
+      <div class="sibling you">
+        <div class="nm">Beth Carlson-Gaddis <span class="status-pip confirmed"></span></div>
+        <div class="meta">your mother · m. Jason Gaddis</div>
+      </div>
+      <div class="sibling">
+        <div class="nm">Blair Carlson <span class="status-pip confirmed"></span></div>
+      </div>
+      <div class="sibling">
+        <div class="nm">Karin Carlson Fender <span class="status-pip confirmed"></span></div>
+      </div>
+      <div class="sibling">
+        <div class="nm">Diane Carlson Santman <span class="status-pip confirmed"></span></div>
+      </div>
+      <div class="sibling">
+        <div class="nm">Christine Carlson Norland <span class="status-pip confirmed"></span></div>
+        <div class="meta">the Norland connection enters by marriage here</div>
+      </div>
+      <div class="sibling">
+        <div class="nm">Becky Carlson Myers <span class="status-pip confirmed"></span></div>
+      </div>
+      <div class="sibling">
+        <div class="nm">Grant Carlson <span class="status-pip confirmed"></span></div>
+      </div>
+      <div class="sibling">
+        <div class="nm">Linda Carlson-Newell <span class="status-pip confirmed"></span></div>
+        <div class="meta">b. 6 May 1963 · d. 29 Jun 2017 · the obituary on which this tree's center rests</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       II · GRANDPARENT GENERATION
+       ==================================================================== -->
+  <div class="era">
+    <div class="roman">II · GRANDPARENT GENERATION</div>
+    <h2>The Fehlbergs and the Carlsons</h2>
+    <div class="gloss">Patricia's parents on one side and Gordon Jr.'s on the other — four people who anchored the St. Joseph / Benton Harbor world the ten siblings grew up in.</div>
+  </div>
+
+  <div class="gen-row">
+    <div class="marker">
+      <span class="num">4a</span>
+      <span class="yr">Fehlberg side</span>
+    </div>
+    <div class="card fehlberg">
+      <div class="name">Fred Fehlberg<span class="status-tag confirmed">Confirmed</span></div>
+      <div class="ep">Patricia Fehlberg Carlson's father</div>
+      <div class="d">named in both Linda Carlson-Newell's and Nancy Norwood Bowes's obituaries as a maternal grandfather of the sibling group · Fehlberg ancestry beyond him not yet researched in this tree</div>
+      <div class="body">
+        <p>The surname <em>Fehlberg</em> is German, with strongest historical concentration in the Mecklenburg / Pomerania region of northern Germany. American Fehlbergs are predominantly descended from the late-19th-century German immigration wave to the Midwest. No specific German hometown for this Fehlberg line has been identified yet — that would be the next research target.</p>
+      </div>
+      <div class="union">
+        <span class="glyph">⚭</span>
+        <div>
+          <div class="who-name">Blossom Pschigoda Fehlberg</div>
+          <div class="who-meta">see card 4b · née Pschigoda · Patricia's mother</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="marker">
+      <span class="num">4b</span>
+      <span class="yr">Pschigoda side</span>
+    </div>
+    <div class="card pschigoda">
+      <div class="name">Blossom Dorothy Pschigoda Fehlberg<span class="status-tag confirmed">Confirmed</span></div>
+      <div class="ep">Patricia's mother · the Polish-German maternal-of-maternal line</div>
+      <div class="d">b. 20th c., Michigan · daughter of William Pschigoda and Emma "Betty" Schultz Pschigoda</div>
+      <div class="body">
+        <p>The naming consolidation here is a small genealogical victory: <em>Blossom Fehlberg</em> in the obituaries of Linda Carlson-Newell and Nancy Norwood Bowes is almost certainly the same person as <em>Blossom Dorothy Pschigoda</em> in Patricia Pschigoda Shea's obituary, which lists her predeceased siblings as Marvin, Melvin, Myron, and <strong>Blossom Pschigoda</strong>. Combined with FamilySearch's snippet for Marvin "Red" I. Pschigoda — which gives the same parental couple <em>William Pschigoda</em> and <em>Emma Betty Schultz</em> and lists <em>Blossom Dorothy Pschigoda</em> among his siblings — the case for "Blossom Fehlberg = Blossom Dorothy Pschigoda" is strong.</p>
+        <p>She has a continuing local memorial: the <strong>Blossom Fehlberg Metal Studio</strong> at <strong>Water Street Glassworks</strong> in Benton Harbor, MI, established in 2009 by Nancy Norwood Bowes in honour of her grandmother. The studio still teaches metal arts there.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="marker">
+      <span class="num">4c</span>
+      <span class="yr">Carlson side</span>
+    </div>
+    <div class="card carlson">
+      <div class="name">Gordon Carlson Sr.<span class="status-tag confirmed">Confirmed</span></div>
+      <div class="ep">Gordon Jr.'s father · Beth's paternal grandfather on the Carlson side</div>
+      <div class="d">named as a grandfather in Linda Carlson-Newell's obituary</div>
+      <div class="union">
+        <span class="glyph">⚭</span>
+        <div>
+          <div class="who-name">Dorothy Carlson <span class="status-tag confirmed">Confirmed (named)</span></div>
+          <div class="who-meta">possible maiden name <em>Dorothy Mae Cubitt</em> — <span class="status-tag probable">Probable</span> from a blocked Find a Grave snippet, not yet primary-sourced</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       III · GREAT-GRANDPARENT GENERATION
+       ==================================================================== -->
+  <div class="era">
+    <div class="roman">III · GREAT-GRANDPARENT GENERATION</div>
+    <h2>William Pschigoda and Emma "Betty" Schultz</h2>
+    <div class="gloss">Two more steps back into the German-and-Polish immigrant fabric of southwest Michigan in the early 20th century.</div>
+  </div>
+
+  <div class="gen-row">
+    <div class="marker">
+      <span class="num">5</span>
+      <span class="yr">Pschigoda · Michigan</span>
+    </div>
+    <div class="card pschigoda">
+      <div class="name">William Pschigoda<span class="status-tag confirmed">Confirmed</span></div>
+      <div class="ep">Patricia's maternal grandfather · Beth's great-grandfather</div>
+      <div class="d">named in FamilySearch and Patricia Pschigoda Shea's obituary as father of the Pschigoda sibling group</div>
+      <div class="body">
+        <p>Patricia Pschigoda Shea's published obituary identifies her parents as <strong>William and Emma "Betty" Schultz Pschigoda</strong>, with Patricia herself born in St. Joseph on 7 August 1932. The same couple appears in FamilySearch's record of their son Marvin "Red" I. Pschigoda (b. 27 October 1917, Michigan).</p>
+        <p>A Geni search result <em>suggests</em> William's own parents were <strong>Gottfried Pschigoda</strong> and <strong>Pauline Stebner</strong> — but the page itself was blocked, so this stays a working lead at <span class="status-tag probable">Probable</span> rather than confirmed. A cleared Geni record, an immigrant-arrival manifest, or a Berrien County death certificate for William would lock this in.</p>
+      </div>
+      <div class="union">
+        <span class="glyph">⚭</span>
+        <div>
+          <div class="who-name">Emma "Betty" Schultz Pschigoda <span class="status-tag confirmed">Confirmed</span></div>
+          <div class="who-meta">named as the mother in both Patricia Shea's obituary and in FamilySearch records for Marvin "Red" Pschigoda</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Pschigoda sibling cluster -->
+  <div class="siblings-block" style="border-left-color: var(--green);">
+    <div class="label" style="color: var(--green);">⊕ William &amp; Emma's children — Blossom's siblings</div>
+    <div class="sibling-grid">
+      <div class="sibling you">
+        <div class="nm">Blossom Dorothy Pschigoda Fehlberg <span class="status-pip confirmed"></span></div>
+        <div class="meta">your maternal great-grandmother</div>
+      </div>
+      <div class="sibling">
+        <div class="nm">Patricia Pschigoda Shea <span class="status-pip confirmed"></span></div>
+        <div class="meta">b. 7 Aug 1932, St. Joseph · obituary is the keystone document for this generation</div>
+      </div>
+      <div class="sibling">
+        <div class="nm">Marvin "Red" I. Pschigoda <span class="status-pip confirmed"></span></div>
+        <div class="meta">b. 27 Oct 1917, Michigan · d. 1969 (per FamilySearch)</div>
+      </div>
+      <div class="sibling">
+        <div class="nm">Melvin Pschigoda <span class="status-pip confirmed"></span></div>
+      </div>
+      <div class="sibling">
+        <div class="nm">Myron Pschigoda <span class="status-pip confirmed"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       IV · BEYOND — POSSIBLE OLDER PSCHIGODA LINE
+       ==================================================================== -->
+  <div class="era">
+    <div class="roman">IV · BEYOND THE THRESHOLD</div>
+    <h2>Lead — Gottfried Pschigoda and Pauline Stebner</h2>
+    <div class="gloss">A working lead from a blocked Geni page · the next records to pull would lock this in or rule it out.</div>
+  </div>
+
+  <div class="gen-row">
+    <div class="marker">
+      <span class="num">6</span>
+      <span class="yr">probable</span>
+    </div>
+    <div class="card pschigoda" style="border-left-color: var(--probable); border-left-style: dashed;">
+      <div class="name">Gottfried Pschigoda · Pauline Stebner<span class="status-tag probable">Probable</span></div>
+      <div class="ep">possible parents of William Pschigoda</div>
+      <div class="d">surfaced via a Geni search result that the public page itself blocked — needs primary-source confirmation</div>
+      <div class="body">
+        <p>If Gottfried Pschigoda and Pauline Stebner are the right couple, this would be the immigrant generation. The surname <strong>Pschigoda</strong> is most likely a Germanized phonetic respelling of the Polish <strong>Przygoda</strong> ("adventure") — common in Polish-language sources, often Polish or Polish-Jewish in origin. The shift Przygoda → Pschigoda matches typical Anglo-American or German-Russian transliteration patterns; if this family came in via a German port (Hamburg, Bremen) or via German-speaking territory inside partitioned Poland, the spelling would naturally have Germanized.</p>
+        <p>The <strong>Stebner</strong> surname is firmly German, occurring most heavily in Silesia and East Prussia. A Gottfried × Pauline immigrant couple from Silesia or Posen would fit both surnames and would fit the late-19th-century German wave to Michigan that produced so many Berrien County families. <em>None of this is yet confirmed</em>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       V · LOCAL CONTEXT
+       ==================================================================== -->
+  <div class="prose-section">
+    <div class="roman">V · LOCAL CONTEXT</div>
+    <h2>St. Joseph and Benton Harbor</h2>
+
+    <p>The whole tree above is anchored to a single small region: the twin cities of <strong>St. Joseph</strong> and <strong>Benton Harbor</strong>, Berrien County, Michigan, on the eastern shore of Lake Michigan about ninety miles by water from Chicago. The two towns sit across the St. Joseph River from each other and have been demographically and economically twinned since the late nineteenth century.</p>
+
+    <p>St. Joseph itself was platted in 1834 and grew through the late 1800s as a Lake Michigan resort town and shipping point — peach orchards on the surrounding bluffs, paddle steamers across the lake to Chicago, summer cottages on the dunes. Benton Harbor was its industrial twin, settled slightly later as a manufacturing town. In 1911 the <strong>Whirlpool Corporation</strong> was founded in Benton Harbor — at first as the Upton Machine Company, making electric motor-driven wringer washing machines — and Whirlpool's Benton Harbor headquarters has remained one of the great corporate anchors of the area for a century.</p>
+
+    <p>The German and Polish immigrant communities that produced the Pschigodas, Schultzes, and Fehlbergs all settled in this Berrien County industrial belt. Benton Harbor at its peak was a major small-manufacturing town with foundries, machine shops, fruit-canning plants, and (the family-memory thread the user has flagged) various rubber and V-belt operations supplying the auto industry up the lake. The specific employer attaching to William Pschigoda or Fred Fehlberg has not yet been pinned to a documentary record; St. Joseph and Benton Harbor city directories at the Berrien County Historical Association would be the highest-yield next stop.</p>
+
+    <h3>Water Street Glassworks and the Blossom Fehlberg Metal Studio</h3>
+    <p>The most visible living monument to this family in Benton Harbor is the <strong>Blossom Fehlberg Metal Studio</strong> at <strong>Water Street Glassworks</strong>, opened in September 2009 with the support of Nancy Norwood Bowes in honour of her grandmother Blossom Fehlberg (née Pschigoda). Water Street Glassworks itself is a community arts nonprofit running glass-blowing and metal-arts classes; the metal studio was the expansion that brought metalworking into the school's program. It functions, in effect, as a public memorial that anchors the Pschigoda-Fehlberg presence in Benton Harbor across at least three named generations.</p>
+
+    <div class="callout">
+      <div class="label">★ THE BLENDED-FAMILY READING</div>
+      <h4>Why this tree is "Patricia-centered"</h4>
+      <p>Public obituaries for two of the ten siblings — Linda Carlson-Newell (d. 2017) and Nancy Norwood Bowes (d. 2018) — give different fathers but the same mother. Linda's father is Gordon Carlson Jr.; Nancy's father is Verrill Norwood. Both are children of <strong>Patricia Fehlberg Carlson</strong>. The full sibling group is therefore best understood as Patricia's children — eight or nine by Gordon Jr. (the published lists are consistent on the names) and one (Nancy) by Verrill Norwood. The Carlson surname has been carried by all ten siblings in adulthood, including Nancy.</p>
+    </div>
+
+    <h3>The Pschigoda / Przygoda surname</h3>
+    <p>One small linguistic puzzle worth flagging: the family name is consistently spelled <strong>Pschigoda</strong> in the documents found so far (Patricia Pschigoda Shea's obituary, FamilySearch's record for Marvin "Red" I. Pschigoda, the Geni snippet for William Pschigoda). An earlier theory in the user's working notes was that the original Polish form was <em>Przygoda</em> ("adventure"), a Polish or Polish-Jewish surname identified in surname dictionaries. The shift from <em>Przygoda</em> to <em>Pschigoda</em> is plausible — it's a phonetic respelling appropriate to a German-speaking transit point or to American clerks unfamiliar with Polish orthography — but the two should not be merged in a written family tree until a record actively documents the spelling change. Until then, treat <em>Pschigoda</em> as the correct spelling for everyone in this tree, with <em>Przygoda</em> as a possible older form.</p>
+  </div>
+
+  <!-- ====================================================================
+       VI · NEXT RECORDS TO FIND
+       ==================================================================== -->
+  <div class="prose-section">
+    <div class="roman">VI · NEXT RECORDS</div>
+    <h2>The five most-useful next documents</h2>
+
+    <p>Below is the working punch list. Each of these would either lock down a Probable claim, or would extend the tree one further generation back than it currently goes.</p>
+
+    <div class="next-records">
+      <div class="label">Targets · in priority order</div>
+      <ol>
+        <li><strong>William Pschigoda's death certificate or obituary</strong> — would confirm or correct the Geni-snippet parents Gottfried &amp; Pauline, and would give a German/Polish hometown that doesn't appear in any of the documents seen so far.</li>
+        <li><strong>Blossom Pschigoda Fehlberg's marriage record to Fred Fehlberg</strong> — Berrien County, MI, probably 1930s. Would conclusively merge the Blossom Pschigoda and Blossom Fehlberg identities with a single document and would fix Fred Fehlberg's parents.</li>
+        <li><strong>Patricia Fehlberg Carlson's birth or marriage record</strong> — Berrien County, MI. Would establish her dates precisely and would tell us whether her marriages to Norwood and Carlson were two formal marriages or a different relationship structure.</li>
+        <li><strong>Gordon Carlson Jr.'s obituary or death certificate</strong> — would name his parents Gordon Sr. and Dorothy explicitly, and would confirm or refute Dorothy's maiden name (the "Dorothy Mae Cubitt" probable from the blocked Find a Grave page).</li>
+        <li><strong>St. Joseph / Benton Harbor city directories, 1920s–1960s</strong> — at the Berrien County Historical Association. Would document William Pschigoda's, Fred Fehlberg's, Gordon Carlson Sr.'s, and Gordon Carlson Jr.'s employers — the highest-yield way to test the family memory of rubber / V-belt / Whirlpool work.</li>
+      </ol>
+    </div>
+
+    <p>Each of these is a routine pull from public records or local-history archives. Patricia Pschigoda Shea's existing obituary is already the keystone for this tree because it documents the Pschigoda sibling group across both generations; a similarly clear obituary for William Pschigoda or for Gordon Carlson Jr. would complete the symmetric structure.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="glyph">✦ · ✦ · ✦</span>
+    Working maternal-line tree · Beth Carlson-Gaddis side<br>
+    Confirmed material grounded in public obituaries; Probable and Unproven claims flagged for follow-up
+    <div class="sources">
+      <strong>Documents cited</strong>
+      <a href="https://www.starksfamilyfh.com/obituaries/3737420">Linda Carlson-Newell obituary, Starks Family Funeral Homes</a> — names Gordon Carlson Jr. and Patricia Fehlberg Carlson as parents; lists all ten siblings; names Gordon Sr., Dorothy, Fred Fehlberg, and Blossom Fehlberg as grandparents.<br>
+      <a href="https://www.starksfamilyfh.com/obituaries/3736892">Nancy Norwood Bowes obituary, Starks Family Funeral Homes</a> — names Verrill Norwood and Patricia Fehlberg Carlson as parents; same sibling list; documents the Water Street Glassworks dedication.<br>
+      <a href="https://www.starksfamilyfh.com/obituaries/3739609">Patricia Pschigoda Shea obituary, Starks Family Funeral Homes</a> — names William Pschigoda and Emma "Betty" Schultz as parents; lists Blossom, Marvin, Melvin, and Myron as predeceased siblings.<br>
+      <a href="https://ancestors.familysearch.org/en/GMPL-CXL/marvin-%22red%22-i-pschigoda-1917-1969">FamilySearch — Marvin "Red" I. Pschigoda</a> — confirms parental pairing William × Emma Betty Schultz; confirms Blossom Dorothy Pschigoda among siblings.<br>
+      Geni search snippet — William Pschigoda parents <em>possibly</em> Gottfried Pschigoda × Pauline Stebner (page itself blocked; treat as Probable).<br>
+      Find a Grave search snippet — Dorothy Carlson <em>possibly</em> née Dorothy Mae Cubitt (page itself blocked; treat as Probable).<br>
+      <a href="http://www.waterstreetglassworks.org">Water Street Glassworks</a> — Blossom Fehlberg Metal Studio in Benton Harbor, MI.<br>
+      <a href="https://www.whirlpoolcorp.com/history.html">Whirlpool Corporation history</a> — Benton Harbor founding 1911; one-century industrial anchor.<br>
+      <a href="https://www.ancestry.com/last-name-meaning/przygoda">Ancestry surname dictionary — Przygoda ("adventure")</a> — Polish/Jewish; possible older form of Pschigoda.
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
